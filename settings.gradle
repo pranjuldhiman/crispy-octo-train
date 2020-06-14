@@ -1,0 +1,2 @@
+rootProject.name='Round Up'
+include ':app'
