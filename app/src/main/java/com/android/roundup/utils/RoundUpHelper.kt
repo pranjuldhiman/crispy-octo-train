@@ -1,10 +1,12 @@
 package com.android.roundup.utils
 
+import android.graphics.Color
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import okhttp3.Request
 import java.io.IOException
+import java.util.*
 
 class RoundUpHelper {
     companion object{
@@ -27,5 +29,10 @@ class RoundUpHelper {
             object : ViewModelProvider.Factory {
                 override fun <T : ViewModel> create(aClass: Class<T>):T = f() as T
             }
+
+        fun getRandomColor(): Int{
+            val rnd = Random()
+            return Color.argb(rnd.nextInt(100), rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256))
+        }
     }
 }

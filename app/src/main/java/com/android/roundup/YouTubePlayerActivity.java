@@ -19,6 +19,7 @@ public class YouTubePlayerActivity extends YouTubeBaseActivity implements YouTub
     private MyPlayerStateChangeListener playerStateChangeListener;
     private MyPlaybackEventListener playbackEventListener;
     private YouTubePlayer player;
+    private String videoUrl = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,13 +35,19 @@ public class YouTubePlayerActivity extends YouTubeBaseActivity implements YouTub
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        videoUrl = getIntent().getStringExtra("videoUrl");
+    }
+
+    @Override
     public void onInitializationSuccess(Provider provider, YouTubePlayer player, boolean wasRestored) {
         this.player = player;
         player.setPlayerStateChangeListener(playerStateChangeListener);
         player.setPlaybackEventListener(playbackEventListener);
 
-        if (!wasRestored) {
-            player.cueVideo(Util.getVideoIdFromYoutubeUrl("https://www.youtube.com/watch?v=W4hTJybfU7s")); // Plays https://www.youtube.com/watch?v=fhWaJi1Hsfo
+        if (!wasRestored && videoUrl != null) {
+            player.cueVideo(Util.getVideoIdFromYoutubeUrl(videoUrl)); // Plays https://www.youtube.com/watch?v=fhWaJi1Hsfo
         }
     }
 

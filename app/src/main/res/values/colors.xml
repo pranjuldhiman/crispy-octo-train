@@ -3,9 +3,11 @@
     <color name="colorPrimary">#363C94</color>
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
+    <color name="thumbnail_bg">#8503DAC5</color>
     <color name="white">#ffffff</color>
     <color name="gray">#9C9FAF</color>
     <color name="btn_ripple_blue">#5F639C</color>
+    <color name="black">#000000</color>
 
     <!-- dots inactive colors -->
     <color name="dot_dark_screen1">#3700B3</color>

@@ -10,14 +10,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
-import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager.widget.PagerAdapter
 import androidx.viewpager.widget.ViewPager
 import com.android.roundup.utils.ApplicationPrefs
-import java.time.temporal.TemporalAdjusters.next
 
 class WelcomeActivity : AppCompatActivity(){
     private var viewPager: ViewPager? = null

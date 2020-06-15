@@ -12,4 +12,9 @@
     <dimen name="dim_5dp">5dp</dimen>
     <dimen name="dim_18sp">18sp</dimen>
     <dimen name="button_height">50dp</dimen>
+    <dimen name="dim_200dp">200dp</dimen>
+    <dimen name="dim_50dp">50dp</dimen>
+    <dimen name="dim_3dp">3dp</dimen>
+    <dimen name="dim_16sp">16sp</dimen>
+    <dimen name="dim_25sp">25sp</dimen>
 </resources>
