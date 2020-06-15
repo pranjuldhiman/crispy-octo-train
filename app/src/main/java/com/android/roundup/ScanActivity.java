@@ -11,6 +11,7 @@ import android.view.SurfaceView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -27,10 +28,11 @@ import java.io.IOException;
 
 public class ScanActivity extends AppCompatActivity {
     private static final String TAG = ScanActivity.class.getSimpleName();
-    private RelativeLayout mRlSearchView, mRlCameraView;
+    private RelativeLayout mRlSearchView, action_bar;
+    private FrameLayout mRlCameraView;
     private TextView mTextView;
     private SurfaceView mCameraView;
-    private ImageView mCamera;
+    private ImageView mCamera, img_back;
     private Button mBackBtn, mCaptureBtn, mSubmitBtn;
     private EditText mSearchText;
     private static final int requestPermissionID = 100;
@@ -48,20 +50,24 @@ public class ScanActivity extends AppCompatActivity {
         mCaptureBtn = findViewById(R.id.capture_button);
         mSubmitBtn = findViewById(R.id.submit_button);
         mSearchText = findViewById(R.id.search_text);
+        action_bar = findViewById(R.id.action_bar);
+        img_back = findViewById(R.id.img_back);
 
         mCamera.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mRlSearchView.setVisibility(View.GONE);
                 mRlCameraView.setVisibility(View.VISIBLE);
+                action_bar.setVisibility(View.VISIBLE);
                 startCameraSource();
             }
         });
-        mBackBtn.setOnClickListener(new View.OnClickListener() {
+        img_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mRlSearchView.setVisibility(View.VISIBLE);
                 mRlCameraView.setVisibility(View.GONE);
+                action_bar.setVisibility(View.GONE);
             }
         });
         mCaptureBtn.setOnClickListener(new View.OnClickListener() {

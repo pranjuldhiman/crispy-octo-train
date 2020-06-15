@@ -1,4 +1,10 @@
 <resources>
     <string name="app_name">Round Up</string>
     <string name="player_error">Error initializing YouTube player: %s</string>
+    <string name="upload_image">Upload an Image</string>
+    <string name="or">OR</string>
+    <string name="search_by_text">Search By Text</string>
+    <string name="submit">Submit</string>
+    <string name="searching_text">Searching Text</string>
+    <string name="done">Done</string>
 </resources>

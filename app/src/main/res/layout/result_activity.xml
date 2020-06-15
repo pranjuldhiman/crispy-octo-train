@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#DCDCDC">
+    android:background="@color/white">
 
     <EditText
         android:id="@+id/search_bar"
@@ -17,8 +17,8 @@
     <RelativeLayout
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:background="#5715a2"
+        android:layout_height="?actionBarSize"
+        android:background="@color/colorPrimary"
         android:orientation="horizontal">
 
         <ImageView

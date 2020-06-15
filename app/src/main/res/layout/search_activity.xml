@@ -3,9 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_gravity="center">
+    android:layout_gravity="center"
+    android:theme="@style/Theme.MaterialComponents.Light">
 
-    <RelativeLayout
+
+
+    <FrameLayout
         android:id="@+id/rlCameraView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -15,15 +18,13 @@
             android:id="@+id/llButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#000000"
-            android:layout_alignParentBottom="true"
-            android:gravity="center">
+            android:layout_gravity="bottom"
+            android:visibility="gone">
 
             <Button
                 android:id="@+id/back_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="#ffffff"
                 android:layout_marginEnd="5dp"
                 android:textColor="#000000"
                 android:text="Back"
@@ -34,7 +35,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
-                android:background="#ffffff"
                 android:textColor="#000000"
                 android:text="Capture"
                 tools:ignore="ButtonStyle" />
@@ -50,17 +50,48 @@
             android:id="@+id/text_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_above="@id/llButton"
-            android:textColor="#ffffff"
-            android:gravity="center"
-            android:text="searching text..." />
+            android:textColor="@color/white"
+            android:textSize="@dimen/body_text_size"
+            android:layout_margin="@dimen/dim_10dp"
+            android:layout_gravity="bottom"
+            android:text="@string/searching_text" />
 
+    </FrameLayout>
+
+    <RelativeLayout
+        android:id="@+id/action_bar"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/img_back"
+            android:layout_width="@dimen/dim_40dp"
+            android:layout_height="@dimen/dim_40dp"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/dim_10dp"
+            android:padding="@dimen/dim_5dp"
+            android:src="@drawable/ic_back"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/dim_18sp"
+            android:textColor="@color/colorPrimary"
+            android:typeface="sans"
+            android:textAllCaps="true"
+            android:text="@string/done"
+            android:layout_alignParentEnd="true"
+            android:padding="@dimen/dim_10dp"
+            android:layout_marginEnd="@dimen/dim_5dp"
+            android:layout_centerVertical="true"/>
     </RelativeLayout>
 
     <RelativeLayout
         android:id="@+id/rlSearchView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:visibility="visible">
 
         <LinearLayout
             android:id="@+id/camLay"
@@ -73,12 +104,12 @@
                 android:id="@+id/cam"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/camera" />
+                android:src="@drawable/ic_camera" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Upload an Image" />
+                android:text="@string/upload_image" />
         </LinearLayout>
 
 
@@ -96,19 +127,21 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_weight="1"
-                android:background="#000000" />
+                android:background="@color/gray" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="OR"
+                android:text="@string/or"
+                android:paddingStart="@dimen/dim_20dp"
+                android:paddingEnd="@dimen/dim_20dp"
                 android:textColor="#000000"
-                android:textSize="18sp" />
+                android:textSize="@dimen/dim_18sp" />
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_weight="1"
-                android:background="#000000" />
+                android:background="@color/gray" />
         </LinearLayout>
 
         <LinearLayout
@@ -117,18 +150,35 @@
             android:layout_below="@id/dividerLay"
             android:orientation="vertical"
             android:padding="10dp">
-            <EditText
-                android:id="@+id/search_text"
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_job_name"
+                style="@style/EditTextOutLineBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:hint="Enter text to search" />
+                android:layout_margin="@dimen/dim_20dp"
+                android:hint="@string/search_by_text">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    style="@style/BodyText"
+                    android:id="@+id/search_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColorHint="@color/gray"
+                    android:inputType="text" />
+            </com.google.android.material.textfield.TextInputLayout>
+
             <Button
                 android:id="@+id/submit_button"
+                style="@style/primary_button"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="submit" />
-
+                android:layout_height="@dimen/button_height"
+                android:layout_marginStart="@dimen/dim_20dp"
+                android:layout_marginEnd="@dimen/dim_20dp"
+                android:layout_marginBottom="@dimen/dim_20dp"
+                android:background="@drawable/primary_btn_bg"
+                android:textSize="@dimen/body_text_size"
+                android:text="@string/submit" />
         </LinearLayout>
     </RelativeLayout>
 </RelativeLayout>
