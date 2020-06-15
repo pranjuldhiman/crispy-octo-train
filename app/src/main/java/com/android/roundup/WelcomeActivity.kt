@@ -23,8 +23,8 @@ class WelcomeActivity : AppCompatActivity(){
     private var dotsLayout: LinearLayout? = null
     private var dots: Array<TextView?> = emptyArray()
     private var layouts: IntArray? = null
-    private var btnMobileLogin: LinearLayout? = null
-    private var btnFbLogin: LinearLayout? = null
+    private var btnMobileLogin: Button? = null
+    private var btnFbLogin: Button? = null
     private lateinit var prefManager: ApplicationPrefs
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -80,12 +80,7 @@ class WelcomeActivity : AppCompatActivity(){
             launchHomeScreen()
         }
         btnMobileLogin!!.setOnClickListener {
-            val current = getItem(+1)
-            if (current < layouts!!.size) {
-                viewPager!!.currentItem = current
-            } else {
-                launchHomeScreen()
-            }
+            launchHomeScreen()
         }
     }
 
