@@ -19,6 +19,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
+import com.android.roundup.resultsactivity.ResultsActivity;
 import com.google.android.gms.vision.CameraSource;
 import com.google.android.gms.vision.Detector;
 import com.google.android.gms.vision.text.TextBlock;
@@ -73,7 +74,7 @@ public class ScanActivity extends AppCompatActivity {
         mCaptureBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(ScanActivity.this, ResultActivity.class);
+                Intent i = new Intent(ScanActivity.this, ResultsActivity.class);
                 i.putExtra("SearchTag", mTextView.getText().toString());
                 startActivity(i);
             }
@@ -81,7 +82,7 @@ public class ScanActivity extends AppCompatActivity {
         mSubmitBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(ScanActivity.this, ResultActivity.class);
+                Intent i = new Intent(ScanActivity.this, ResultsActivity.class);
                 i.putExtra("SearchTag", mSearchText.getText().toString());
                 startActivity(i);
             }
