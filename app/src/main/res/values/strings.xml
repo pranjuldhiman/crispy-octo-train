@@ -7,4 +7,6 @@
     <string name="submit">Submit</string>
     <string name="searching_text">Searching Text</string>
     <string name="done">Done</string>
+    <string name="start">start</string>
+    <string name="next">next</string>
 </resources>
