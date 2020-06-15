@@ -9,4 +9,10 @@
     <string name="done">Done</string>
     <string name="start">start</string>
     <string name="next">next</string>
+    <string name="back">Back</string>
+    <string name="verification_code">Verification Code</string>
+    <string name="verify_code_desc">Verification code has been sent to your\nmobile number.Please wait\nwe are verifying you.</string>
+    <string name="continu">Continue</string>
+    <string name="resend_code">Resend Code</string>
+    <string name="enter_otp_error">Please enter given OTP.</string>
 </resources>

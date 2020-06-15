@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "782700706479",
+    "firebase_url": "https://round-up-69f8d.firebaseio.com",
+    "project_id": "round-up-69f8d",
+    "storage_bucket": "round-up-69f8d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:782700706479:android:62b55d265f20e961b1f25a",
+        "android_client_info": {
+          "package_name": "com.android.roundup"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "782700706479-lgfsfq0fj7agl40g7m54ngh4ku8t4q7h.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.android.roundup",
+            "certificate_hash": "c3d9ed3448256c06ae5aafd28f12e64077a0817e"
+          }
+        },
+        {
+          "client_id": "782700706479-11bb9hgl7t4osijuoc8v9jrnl5p4ustb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDLqJSj1aoL7kLF44jUkB9GoEoYyn68u3U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "782700706479-11bb9hgl7t4osijuoc8v9jrnl5p4ustb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

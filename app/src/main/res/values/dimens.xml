@@ -17,4 +17,6 @@
     <dimen name="dim_3dp">3dp</dimen>
     <dimen name="dim_16sp">16sp</dimen>
     <dimen name="dim_25sp">25sp</dimen>
+    <dimen name="dim_30sp">30sp</dimen>
+    <dimen name="dim_45dp">45dp</dimen>
 </resources>

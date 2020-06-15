@@ -3,14 +3,15 @@
     android:layout_width="match_parent"
     android:background="@drawable/login_bg"
     android:gravity="center"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:theme="@style/Theme.MaterialComponents.Light">
 
     <LinearLayout
         android:id="@+id/linearLay"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:padding="15dp"
+        android:padding="@dimen/dim_30dp"
         android:orientation="vertical">
 
         <TextView
@@ -19,6 +20,7 @@
             android:gravity="right"
             android:text="LOGIN"
             android:textColor="#ffffff"
+            android:layout_marginBottom="@dimen/dim_20dp"
             android:textSize="20sp" />
 
         <TextView
@@ -27,19 +29,26 @@
             android:gravity="right"
             android:text="Enter your mobile number"
             android:textColor="#ffffff"
-            android:textSize="20sp" />
+            android:textSize="@dimen/dim_18sp" />
 
-        <EditText
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/et_phone"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:background="@drawable/edittext_border"/>
+            android:layout_height="@dimen/dim_50dp"
+            android:background="@drawable/edittext_border"
+            android:padding="@dimen/dim_10dp"
+            android:inputType="phone"
+            android:maxLength="10"/>
 
         <Button
+            android:id="@+id/btn_verify"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="VERIFY OTP"
             android:textColor="#ffffff"
             android:layout_marginTop="20dp"
+            android:layout_marginStart="@dimen/dim_30dp"
+            android:layout_marginEnd="@dimen/dim_30dp"
             android:background="@drawable/round_button"
             android:textSize="@dimen/dim_18sp" />
 

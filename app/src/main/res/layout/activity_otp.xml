@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:theme="@style/Theme.MaterialComponents.Light">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:background="@color/white"
+        android:theme="@style/ThemeOverlay.MaterialComponents.Dark.ActionBar"
+        app:contentInsetEnd="0dp"
+        app:contentInsetStart="0dp"
+        tools:ignore="MissingConstraints">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingStart="@dimen/dim_10dp">
+
+            <ImageView
+                android:id="@+id/img_back"
+                android:layout_width="@dimen/dim_40dp"
+                android:layout_height="@dimen/dim_40dp"
+                android:layout_centerVertical="true"
+                android:padding="@dimen/dim_5dp"
+                android:src="@drawable/ic_back" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/txt_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toEndOf="@+id/img_back"
+                android:text="@string/back"
+                android:textColor="@color/black"
+                android:textSize="@dimen/dim_20dp" />
+
+        </RelativeLayout>
+    </androidx.appcompat.widget.Toolbar>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/verification_code"
+            android:textColor="@color/black"
+            android:textSize="@dimen/dim_20dp" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/dim_10dp"
+            android:gravity="center_horizontal"
+            android:text="@string/verify_code_desc"
+            android:textColor="@color/black"
+            android:textSize="@dimen/dim_16sp" />
+
+        <com.mukesh.OtpView
+            android:id="@+id/otp_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dim_30dp"
+            android:background="@color/white"
+            android:inputType="number"
+            android:itemBackground="@drawable/edit_text_bg"
+            android:textColor="@color/black"
+            android:textSize="@dimen/dim_30sp"
+            android:textStyle="normal"
+            app:hideLineWhenFilled="true"
+            app:itemCount="6"
+            app:itemSpacing="6dp"
+            app:lineColor="@android:color/transparent"
+            app:lineWidth="0dp"
+            app:state_filled="true"
+            app:viewType="rectangle" />
+
+        <Button
+            android:id="@+id/btn_continue"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dim_45dp"
+            android:layout_margin="@dimen/dim_20dp"
+            android:background="@drawable/primary_btn_bg"
+            android:elevation="@dimen/dim_5dp"
+            android:gravity="center"
+            android:outlineProvider="bounds"
+            android:stateListAnimator="@null"
+            android:text="@string/continu"
+            android:textAllCaps="true"
+            android:textColor="@color/white"
+            android:textSize="@dimen/dim_16sp"
+            android:translationZ="@dimen/dim_5dp"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal"
+            android:text="@string/resend_code"
+            android:textColor="@color/black"
+            android:textSize="@dimen/dim_16sp" />
+    </LinearLayout>
+
+</LinearLayout>

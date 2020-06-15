@@ -1,7 +1,9 @@
 package com.android.roundup.utils
 
+import android.content.Context
 import android.graphics.Color
 import android.util.Log
+import android.widget.Toast
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import okhttp3.Request
@@ -33,6 +35,10 @@ class RoundUpHelper {
         fun getRandomColor(): Int{
             val rnd = Random()
             return Color.argb(rnd.nextInt(100), rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256))
+        }
+
+        fun makeToast(context: Context, message: String){
+            Toast.makeText(context,message, Toast.LENGTH_SHORT).show()
         }
     }
 }
