@@ -31,13 +31,15 @@
 
         <EditText
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dim_40dp"
+            android:layout_height="50dp"
             android:background="@drawable/edittext_border"/>
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="VERIFY OTP"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/round_button"
             android:textSize="@dimen/dim_18sp" />
 
         <ImageView
