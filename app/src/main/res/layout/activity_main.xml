@@ -3,20 +3,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".MainActivity"
-    android:background="@color/white">
+    android:background="@color/white"
+    tools:context=".MainActivity">
 
 
     <LinearLayout
         android:id="@+id/nav_layout"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dim_100dp"
-        android:background="@drawable/nav_bar_bg"
+        android:layout_height="@dimen/dim_120dp"
+        android:layout_alignParentBottom="true"
         android:layout_marginStart="@dimen/dim_minus_25dp"
         android:layout_marginEnd="@dimen/dim_minus_25dp"
         android:layout_marginBottom="@dimen/dim_minus_20dp"
-        android:layout_alignParentBottom="true"
+        android:background="@drawable/nav_bar_bg"
         android:paddingStart="@dimen/dim_25dp"
         android:paddingEnd="@dimen/dim_25dp"
         android:weightSum="5">
@@ -24,13 +23,32 @@
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1">
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="@dimen/dim_40dp"
+                android:layout_height="@dimen/dim_40dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/dim_5dp"
+                android:contentDescription=""
+                android:src="@drawable/home" />
 
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1">
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="@dimen/dim_40dp"
+                android:layout_height="@dimen/dim_40dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/dim_5dp"
+                android:contentDescription=""
+                android:src="@drawable/assignment" />
 
         </LinearLayout>
 
@@ -38,36 +56,209 @@
             android:id="@+id/add_photo_layout"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:gravity="center"
-            android:layout_weight="1">
+            android:layout_weight="1"
+            android:gravity="center">
 
             <ImageView
                 android:layout_width="@dimen/dim_40dp"
                 android:layout_height="@dimen/dim_40dp"
-                android:src="@drawable/ic_add_a_photo"
                 android:layout_gravity="center"
                 android:layout_marginBottom="@dimen/dim_5dp"
-                android:contentDescription="" />
+                android:contentDescription=""
+                android:src="@drawable/ic_add_a_photo" />
 
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1">
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="@dimen/dim_40dp"
+                android:layout_height="@dimen/dim_40dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/dim_5dp"
+                android:contentDescription=""
+                android:src="@drawable/outline" />
 
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1">
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="@dimen/dim_40dp"
+                android:layout_height="@dimen/dim_40dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/dim_5dp"
+                android:contentDescription=""
+                android:src="@drawable/account" />
 
         </LinearLayout>
     </LinearLayout>
 
-    <FrameLayout
-        android:id="@+id/frame_dashboard"
+    <RelativeLayout
+        android:id="@+id/parentLay"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@+id/nav_layout"/>
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/rlayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/sound_wave"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="ASK YOUR DOUBT ?" />
+
+            <ImageView
+                android:id="@+id/cam_img"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/text"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/dim_20dp"
+                android:src="@drawable/camera_icon" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/cam_img"
+                android:layout_marginTop="@dimen/dim_10dp"
+                android:gravity="center"
+                android:text="Upload your doubt for instant solution" />
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/app_selector"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dim_40dp"
+            android:layout_below="@id/rlayout"
+            android:layout_marginTop="@dimen/dim_10dp"
+            android:background="#808080"
+            android:orientation="horizontal"
+            android:weightSum="4">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="2dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:background="#ffffff"
+                    android:src="@drawable/pdf"
+                    tools:ignore="NestedWeights" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#ffffff"
+                    android:gravity="center"
+                    android:text="PDF" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="2dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:background="#ffffff"
+                    android:src="@drawable/video"
+                    tools:ignore="NestedWeights" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#ffffff"
+                    android:gravity="center"
+                    android:text="VIDEO" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="2dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:background="#ffffff"
+                    android:src="@drawable/whatsapp"
+                    tools:ignore="NestedWeights" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#ffffff"
+                    android:gravity="center"
+                    android:text="WHATSAPP" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:background="#ffffff"
+                    android:src="@drawable/update"
+                    tools:ignore="NestedWeights" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#ffffff"
+                    android:gravity="center"
+                    android:text="UPDATES" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/contentVP"
+            android:layout_width="match_parent"
+            android:layout_below="@id/app_selector"
+            android:layout_height="100dp"/>
+
+        <ImageView
+            android:id="@+id/viewPager"
+            android:layout_marginLeft="@dimen/dim_10dp"
+            android:layout_marginRight="@dimen/dim_10dp"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:layout_below="@id/contentVP"
+            android:src="@drawable/ad" />
+
+    </RelativeLayout>
 
 </RelativeLayout>
