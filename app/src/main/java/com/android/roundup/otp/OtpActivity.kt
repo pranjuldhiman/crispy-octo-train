@@ -14,6 +14,8 @@ import com.android.roundup.R
 import com.android.roundup.utils.Constants.GLOBAL_TAG
 import com.android.roundup.utils.Constants.PHONE_NUMBER
 import com.android.roundup.utils.RoundUpHelper
+import com.android.roundup.utils.Util.IS_LOGGED_IN
+import com.android.roundup.utils.Util.saveLoginData
 import com.google.android.gms.tasks.Task
 import com.google.android.gms.tasks.TaskExecutors
 import com.google.firebase.FirebaseException
@@ -108,6 +110,7 @@ class OtpActivity : AppCompatActivity() {
         fireBaseAuth.signInWithCredential(credential).addOnCompleteListener { task: Task<AuthResult> ->
             if (task.isSuccessful){
                 //LimeSharedRepositoryImpl(this).isLoggedIn = true
+                saveLoginData(this, IS_LOGGED_IN, true)
                 startActivity(Intent(this@OtpActivity, MainActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK ).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK))
             }
             else
