@@ -6,6 +6,7 @@
     <color name="thumbnail_bg">#8503DAC5</color>
     <color name="white">#ffffff</color>
     <color name="gray">#9C9FAF</color>
+    <color name="trans_gray">#AA9C9FAF</color>
     <color name="btn_ripple_blue">#5F639C</color>
     <color name="black">#000000</color>
 

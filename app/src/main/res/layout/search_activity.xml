@@ -62,6 +62,7 @@
         android:id="@+id/action_bar"
         android:layout_width="match_parent"
         android:layout_height="?actionBarSize"
+        android:background="@color/trans_gray"
         android:visibility="gone">
 
         <ImageView
@@ -74,6 +75,7 @@
             android:src="@drawable/ic_back"/>
 
         <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/btn_done"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="@dimen/dim_18sp"
@@ -81,6 +83,7 @@
             android:typeface="sans"
             android:textAllCaps="true"
             android:text="@string/done"
+            android:textStyle="bold"
             android:layout_alignParentEnd="true"
             android:padding="@dimen/dim_10dp"
             android:layout_marginEnd="@dimen/dim_5dp"

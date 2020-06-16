@@ -31,7 +31,7 @@ public class ScanActivity extends AppCompatActivity {
     private static final String TAG = ScanActivity.class.getSimpleName();
     private RelativeLayout mRlSearchView, action_bar;
     private FrameLayout mRlCameraView;
-    private TextView mTextView;
+    private TextView mTextView, btn_done;
     private SurfaceView mCameraView;
     private ImageView mCamera, img_back;
     private Button mBackBtn, mCaptureBtn, mSubmitBtn;
@@ -50,6 +50,7 @@ public class ScanActivity extends AppCompatActivity {
         mBackBtn = findViewById(R.id.back_button);
         mCaptureBtn = findViewById(R.id.capture_button);
         mSubmitBtn = findViewById(R.id.submit_button);
+        btn_done = findViewById(R.id.btn_done);
         mSearchText = findViewById(R.id.search_text);
         action_bar = findViewById(R.id.action_bar);
         img_back = findViewById(R.id.img_back);
@@ -84,6 +85,15 @@ public class ScanActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent i = new Intent(ScanActivity.this, ResultsActivity.class);
                 i.putExtra("SearchTag", mSearchText.getText().toString());
+                startActivity(i);
+            }
+        });
+
+        btn_done.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(ScanActivity.this, ResultsActivity.class);
+                i.putExtra("SearchTag", mTextView.getText().toString());
                 startActivity(i);
             }
         });
@@ -154,18 +164,15 @@ public class ScanActivity extends AppCompatActivity {
                     final SparseArray<TextBlock> items = detections.getDetectedItems();
                     if (items.size() != 0) {
 
-                        mTextView.post(new Runnable() {
-                            @Override
-                            public void run() {
-                                StringBuilder stringBuilder = new StringBuilder();
+                        StringBuilder stringBuilder = new StringBuilder();
                                 for (int i = 0; i < items.size(); i++) {
                                     TextBlock item = items.valueAt(i);
                                     stringBuilder.append(item.getValue());
                                     stringBuilder.append("\n");
                                 }
-                                mTextView.setText(stringBuilder.toString());
-                            }
-                        });
+                        TextBlock item = items.valueAt(0);
+                        stringBuilder.append(item.getValue());
+                        mTextView.setText(stringBuilder.toString());
                     }
                 }
             });

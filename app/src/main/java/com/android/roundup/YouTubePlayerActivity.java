@@ -28,7 +28,6 @@ public class YouTubePlayerActivity extends YouTubeBaseActivity implements YouTub
 
         youTubeView = (YouTubePlayerView) findViewById(R.id.youtube_view);
         youTubeView.initialize(Config.YOUTUBE_API_KEY, this);
-
         playerStateChangeListener = new MyPlayerStateChangeListener();
         playbackEventListener = new MyPlaybackEventListener();
 
@@ -82,19 +81,19 @@ public class YouTubePlayerActivity extends YouTubeBaseActivity implements YouTub
         @Override
         public void onPlaying() {
             // Called when playback starts, either due to user action or call to play().
-            showMessage("Playing");
+            //showMessage("Playing");
         }
 
         @Override
         public void onPaused() {
             // Called when playback is paused, either due to user action or call to pause().
-            showMessage("Paused");
+            //showMessage("Paused");
         }
 
         @Override
         public void onStopped() {
             // Called when playback stops for a reason other than being paused.
-            showMessage("Stopped");
+            //showMessage("Stopped");
         }
 
         @Override
