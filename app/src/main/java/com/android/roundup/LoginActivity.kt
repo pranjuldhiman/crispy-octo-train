@@ -1,7 +1,9 @@
 package com.android.roundup
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
@@ -11,6 +13,9 @@ import androidx.appcompat.app.AppCompatActivity
 import com.android.roundup.otp.OtpActivity
 import com.android.roundup.utils.Constants.GLOBAL_TAG
 import com.android.roundup.utils.Constants.PHONE_NUMBER
+import com.android.roundup.utils.Util
+import com.android.roundup.utils.Util.IS_LOGGED_IN
+import com.android.roundup.utils.Util.getLoginData
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.iid.FirebaseInstanceId
 import kotlinx.android.synthetic.main.login_activity.*
@@ -24,7 +29,12 @@ class LoginActivity : AppCompatActivity(){
         }
 
         setContentView(R.layout.login_activity)
-        configureUi()
+        if (getLoginData(this, IS_LOGGED_IN)){
+            launchMainActivity()
+        }else{
+            configureUi()
+        }
+
     }
 
     init {
@@ -46,5 +56,12 @@ class LoginActivity : AppCompatActivity(){
                     PHONE_NUMBER, "+91".plus(et_phone.text.toString())
                 ))
         }
+    }
+
+    private fun launchMainActivity() {
+        startActivity(
+            Intent(this@LoginActivity, MainActivity::class.java)
+                .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        )
     }
 }
