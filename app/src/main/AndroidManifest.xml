@@ -17,10 +17,9 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
 
-
         <activity
-            android:name=".ScanActivity"
-            android:screenOrientation="portrait">
+            android:name=".WelcomeActivity"
+            android:screenOrientation="unspecified">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -29,29 +28,29 @@
         </activity>
         <activity
             android:name=".MainActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="unspecified" />
         <activity
-            android:name=".WelcomeActivity"
-            android:screenOrientation="portrait" />
+            android:name=".ScanActivity"
+            android:screenOrientation="unspecified" />
         <activity
             android:name=".resultsactivity.ResultsActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="unspecified" />
         <activity
             android:name=".YouTubePlayerActivity"
             android:configChanges="orientation|screenSize" />
         <activity
             android:name=".LoginActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="unspecified" />
         <activity
             android:name=".otp.OtpActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="unspecified" />
         <activity
             android:name="com.yalantis.ucrop.UCropActivity"
-            android:screenOrientation="portrait"
+            android:screenOrientation="unspecified"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
 
         <activity android:name=".PreviewActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="unspecified"/>
 
         <meta-data
             android:name="com.google.android.gms.vision.DEPENDENCIES"
