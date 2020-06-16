@@ -2,6 +2,7 @@ package com.android.roundup.resultsactivity
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -19,6 +20,8 @@ class ResultsActivity: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.result_activity)
+        progress_bar.visibility = View.VISIBLE
+        rcv_results.visibility = View.INVISIBLE
         setViewModelObservers()
         img_back.setOnClickListener {
             onBackPressed()
@@ -28,6 +31,8 @@ class ResultsActivity: AppCompatActivity() {
     private fun setViewModelObservers() {
         viewModel.apply {
             listOfSearchResult.observe(this@ResultsActivity, Observer {
+                progress_bar.visibility = View.INVISIBLE
+                rcv_results.visibility = View.VISIBLE
                 rcv_results.apply {
                     adapter = ResultsAdapter({
                         startActivity(Intent(this@ResultsActivity, YouTubePlayerActivity::class.java).putExtra("videoUrl", it.videourl))
