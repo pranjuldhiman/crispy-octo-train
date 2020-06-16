@@ -1,9 +1,15 @@
 package com.android.roundup;
 
 import android.Manifest;
+import android.app.Activity;
+import android.content.ContentResolver;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.util.SparseArray;
 import android.view.SurfaceHolder;
@@ -16,15 +22,19 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import androidx.core.content.FileProvider;
 
 import com.android.roundup.resultsactivity.ResultsActivity;
 import com.google.android.gms.vision.CameraSource;
 import com.google.android.gms.vision.Detector;
 import com.google.android.gms.vision.text.TextBlock;
 import com.google.android.gms.vision.text.TextRecognizer;
+import com.yalantis.ucrop.UCrop;
 
+import java.io.File;
 import java.io.IOException;
 
 public class ScanActivity extends AppCompatActivity {
@@ -37,6 +47,9 @@ public class ScanActivity extends AppCompatActivity {
     private Button mBackBtn, mCaptureBtn, mSubmitBtn;
     private EditText mSearchText;
     private static final int requestPermissionID = 100;
+    private static final int CAMERA_PERMISSION_CODE = 200;
+    private boolean isCameraPermission = false;
+    private Uri mImageUri = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -101,6 +114,7 @@ public class ScanActivity extends AppCompatActivity {
     }
 
     private void startCameraSource() {
+        /*
         //Create the TextRecognizer
         final TextRecognizer textRecognizer = new TextRecognizer.Builder(getApplicationContext()).build();
         if (!textRecognizer.isOperational()) {
@@ -113,10 +127,10 @@ public class ScanActivity extends AppCompatActivity {
                     .setAutoFocusEnabled(true)
                     .setRequestedFps(2.0f)
                     .build();
-            /**
+            *//**
              * Add call back to SurfaceView and check if camera permission is granted.
              * If permission is granted we can start our cameraSource and pass it to surfaceView
-             */
+             *//*
             mCameraView.getHolder().addCallback(new SurfaceHolder.Callback() {
                 @Override
                 public void surfaceCreated(SurfaceHolder holder) {
@@ -140,9 +154,9 @@ public class ScanActivity extends AppCompatActivity {
                 public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
                 }
 
-                /**
+                *//**
                  * Release resources for cameraSource
-                 */
+                 *//*
                 @Override
                 public void surfaceDestroyed(SurfaceHolder holder) {
                     mCameraSource.stop();
@@ -155,10 +169,10 @@ public class ScanActivity extends AppCompatActivity {
                 public void release() {
                 }
 
-                /**
+                *//**
                  * Detect all the text from camera using TextBlock and the values into a stringBuilder
                  * which will then be set to the textView.
-                 * */
+                 * *//*
                 @Override
                 public void receiveDetections(Detector.Detections<TextBlock> detections) {
                     final SparseArray<TextBlock> items = detections.getDetectedItems();
@@ -177,6 +191,48 @@ public class ScanActivity extends AppCompatActivity {
                 }
             });
         }
+        */
+        Intent intent = new Intent("android.media.action.IMAGE_CAPTURE");
+        File photo = null;
+        try {
+            photo = this.createTemporaryFile("picture", ".jpg");
+            photo.delete();
+        }
+        catch(Exception e){}
+        //mImageUri = Uri.fromFile(photo);
+        mImageUri = FileProvider.getUriForFile(ScanActivity.this,
+                BuildConfig.APPLICATION_ID + ".provider",
+                photo);
+        intent.putExtra(MediaStore.EXTRA_OUTPUT, mImageUri);
+        startActivityForResult(intent, 0);
+    }
 
+    private File createTemporaryFile(String picture, String s) throws Exception{
+        File tempDir= Environment.getExternalStorageDirectory();
+        tempDir=new File(tempDir.getAbsolutePath()+"/RoundUp/");
+        if(!tempDir.exists()) {
+            tempDir.mkdirs();
+        }
+        return File.createTempFile(picture, s, tempDir);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        switch(requestCode) {
+            case 0:
+                if (resultCode == Activity.RESULT_OK) {
+                    UCrop.of(mImageUri, Uri.fromFile(new File(ScanActivity.this.getCacheDir(),"CropImage.jpg")))
+                            .withAspectRatio(1, 1)
+                            .withMaxResultSize(1000, 1000)
+                            .start(this, UCrop.REQUEST_CROP);
+
+                }
+                break;
+            case UCrop.REQUEST_CROP:
+                final Uri mImageUri = UCrop.getOutput(data);
+                
+                break;
+        }
     }
 }
