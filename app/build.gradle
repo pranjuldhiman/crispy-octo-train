@@ -98,6 +98,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-analytics:17.2.2'
     implementation 'com.google.firebase:firebase-core:17.4.3'
     implementation 'com.google.firebase:firebase-ml-vision:24.0.3'
+    implementation 'com.squareup.picasso:picasso:2.5.2'
 
     implementation 'com.github.mukeshsolanki:android-otpview-pinview:2.1.0'
     implementation 'com.github.yalantis:ucrop:2.2.3-native'

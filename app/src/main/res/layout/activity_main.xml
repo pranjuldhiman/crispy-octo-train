@@ -3,8 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/white"
-    tools:context=".MainActivity">
+    tools:context=".dashboard.MainActivity">
 
 
     <LinearLayout
@@ -27,8 +28,8 @@
             android:gravity="center">
 
             <ImageView
-                android:layout_width="@dimen/dim_40dp"
-                android:layout_height="@dimen/dim_40dp"
+                android:layout_width="@dimen/dim_30dp"
+                android:layout_height="@dimen/dim_30dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="@dimen/dim_5dp"
                 android:contentDescription=""
@@ -110,8 +111,8 @@
         <RelativeLayout
             android:id="@+id/rlayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/sound_wave"
+            android:layout_height="@dimen/dim_200dp"
+            android:background="@drawable/header_bg"
             android:gravity="center"
             android:orientation="vertical">
 
@@ -120,6 +121,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
+                android:textColor="@color/white"
+                android:textSize="@dimen/dim_16sp"
                 android:text="ASK YOUR DOUBT ?" />
 
             <ImageView
@@ -137,118 +140,155 @@
                 android:layout_below="@id/cam_img"
                 android:layout_marginTop="@dimen/dim_10dp"
                 android:gravity="center"
+                android:textSize="@dimen/dim_12sp"
+                android:textColor="@color/white"
                 android:text="Upload your doubt for instant solution" />
 
         </RelativeLayout>
-
-        <LinearLayout
-            android:id="@+id/app_selector"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_selector"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dim_40dp"
+            android:layout_height="wrap_content"
             android:layout_below="@id/rlayout"
-            android:layout_marginTop="@dimen/dim_10dp"
-            android:background="#808080"
-            android:orientation="horizontal"
-            android:weightSum="4">
-
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="@dimen/dim_3dp"
+            app:cardElevation="@dimen/dim_10dp">
             <LinearLayout
+                android:id="@+id/app_selector"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginEnd="2dp"
-                android:layout_weight="1"
-                android:orientation="vertical">
+                android:layout_height="@dimen/dim_40dp"
+                android:layout_marginTop="@dimen/dim_10dp"
+                android:background="#808080"
+                android:orientation="horizontal"
+                android:weightSum="4">
 
-                <ImageView
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="2dp"
                     android:layout_weight="1"
-                    android:background="#ffffff"
-                    android:src="@drawable/pdf"
-                    tools:ignore="NestedWeights" />
+                    android:orientation="vertical">
 
-                <TextView
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:background="#ffffff"
+                        android:src="@drawable/pdf"
+                        tools:ignore="NestedWeights" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#ffffff"
+                        android:gravity="center"
+                        android:text="PDF"
+                        android:textSize="@dimen/dim_12sp"/>
+                </LinearLayout>
+
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="#ffffff"
-                    android:gravity="center"
-                    android:text="PDF" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginEnd="2dp"
-                android:layout_weight="1"
-                android:orientation="vertical">
-
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="2dp"
                     android:layout_weight="1"
-                    android:background="#ffffff"
-                    android:src="@drawable/video"
-                    tools:ignore="NestedWeights" />
+                    android:orientation="vertical">
 
-                <TextView
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:background="#ffffff"
+                        android:src="@drawable/video"
+                        tools:ignore="NestedWeights" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#ffffff"
+                        android:gravity="center"
+                        android:text="VIDEO"
+                        android:textSize="@dimen/dim_12sp"/>
+                </LinearLayout>
+
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="#ffffff"
-                    android:gravity="center"
-                    android:text="VIDEO" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginEnd="2dp"
-                android:layout_weight="1"
-                android:orientation="vertical">
-
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="2dp"
                     android:layout_weight="1"
-                    android:background="#ffffff"
-                    android:src="@drawable/whatsapp"
-                    tools:ignore="NestedWeights" />
+                    android:orientation="vertical">
 
-                <TextView
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:background="#ffffff"
+                        android:src="@drawable/whatsapp"
+                        tools:ignore="NestedWeights" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#ffffff"
+                        android:gravity="center"
+                        android:text="WHATSAPP"
+                        android:textSize="@dimen/dim_12sp"/>
+                </LinearLayout>
+
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="#ffffff"
-                    android:gravity="center"
-                    android:text="WHATSAPP" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:orientation="vertical">
-
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:background="#ffffff"
-                    android:src="@drawable/update"
-                    tools:ignore="NestedWeights" />
+                    android:orientation="vertical">
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="#ffffff"
-                    android:gravity="center"
-                    android:text="UPDATES" />
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:background="#ffffff"
+                        android:src="@drawable/update"
+                        tools:ignore="NestedWeights" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#ffffff"
+                        android:gravity="center"
+                        android:textSize="@dimen/dim_12sp"
+                        android:text="UPDATES" />
+                </LinearLayout>
+
             </LinearLayout>
+        </androidx.cardview.widget.CardView>
 
-        </LinearLayout>
+        <RelativeLayout
+            android:id="@+id/header_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/card_selector"
+            android:padding="@dimen/dim_10dp">
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/dim_14sp"
+                android:textColor="@color/black"
+                android:text="@string/latest_videos"/>
 
-        <androidx.viewpager.widget.ViewPager
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/dim_14sp"
+                android:textColor="@android:color/holo_blue_dark"
+                android:textAllCaps="true"
+                android:text="@string/view_all"
+                android:clickable="true"
+                android:layout_alignParentEnd="true"/>
+        </RelativeLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/contentVP"
             android:layout_width="match_parent"
-            android:layout_below="@id/app_selector"
-            android:layout_height="100dp"/>
+            android:layout_below="@id/header_layout"
+            android:layout_height="@dimen/dim_100dp"/>
 
         <ImageView
             android:id="@+id/viewPager"

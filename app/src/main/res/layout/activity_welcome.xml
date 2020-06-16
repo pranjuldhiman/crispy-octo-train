@@ -40,6 +40,7 @@
                 android:layout_height="wrap_content"
                 android:paddingLeft="@dimen/dim_10dp"
                 android:drawableLeft="@drawable/ic_facebook"
+                android:drawableTint="@color/white"
                 android:text="Facebook Login"
                 android:textColor="#ffffff"
                 android:background="@drawable/fb_bg"/>

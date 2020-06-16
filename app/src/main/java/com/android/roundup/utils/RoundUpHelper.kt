@@ -2,10 +2,14 @@ package com.android.roundup.utils
 
 import android.content.Context
 import android.graphics.Color
+import android.nfc.tech.NfcV.get
 import android.util.Log
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.android.roundup.R
+import com.squareup.picasso.Picasso
 import okhttp3.Request
 import java.io.IOException
 import java.util.*
@@ -39,6 +43,14 @@ class RoundUpHelper {
 
         fun makeToast(context: Context, message: String){
             Toast.makeText(context,message, Toast.LENGTH_SHORT).show()
+        }
+
+        fun setImageUsingPicasso(context: Context, view: ImageView, url: String){
+            Picasso.with(context).load(url).placeholder(R.mipmap.ic_launcher).noFade().into(view);
+        }
+
+        fun setImageUsingPicassoWithPlaceHolder(context: Context, view: ImageView, url: String, placeHolder: Int){
+            Picasso.with(context).load(url).placeholder(placeHolder).noFade().into(view);
         }
     }
 }

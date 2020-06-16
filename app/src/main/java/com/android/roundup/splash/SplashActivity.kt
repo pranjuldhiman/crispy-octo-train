@@ -6,8 +6,10 @@ import android.os.Handler
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.android.roundup.LoginActivity
-import com.android.roundup.MainActivity
+import com.android.roundup.dashboard.MainActivity
 import com.android.roundup.R
+import com.android.roundup.WelcomeActivity
+import com.android.roundup.utils.ApplicationPrefs
 
 private const val TIME_OUT_TIME: Long = 3000
 class SplashActivity : AppCompatActivity() {
@@ -20,12 +22,18 @@ class SplashActivity : AppCompatActivity() {
     }
 
     private fun configureHandler() {
-        /*Handler().postDelayed(Runnable {
-            if (LimeSharedRepositoryImpl(this).isLoggedIn)
+        Handler().postDelayed(Runnable {
+            if (ApplicationPrefs.isLoggedIn())
                 startActivity(Intent(this, MainActivity::class.java))
-            else
-                startActivity(Intent(this, LoginActivity::class.java))
+            else{
+                if (ApplicationPrefs.isNotFirstTime()){
+                    startActivity(Intent(this, LoginActivity::class.java))
+                }else{
+                    startActivity(Intent(this, WelcomeActivity::class.java))
+                }
+            }
+
             this.finish()
-        }, TIME_OUT_TIME)*/
+        }, TIME_OUT_TIME)
     }
 }

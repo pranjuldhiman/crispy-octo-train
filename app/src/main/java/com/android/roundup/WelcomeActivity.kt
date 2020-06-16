@@ -26,7 +26,6 @@ class WelcomeActivity : AppCompatActivity(){
     private var layouts: IntArray? = null
     private var btnMobileLogin: Button? = null
     private var btnFbLogin: Button? = null
-    private lateinit var prefManager: ApplicationPrefs
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,8 +42,7 @@ class WelcomeActivity : AppCompatActivity(){
     }
 
     private fun init() {
-        prefManager = ApplicationPrefs()
-        if (prefManager.isNotFirstTime()) {
+        if (ApplicationPrefs.isNotFirstTime()) {
             openMainScreen()
         }
         viewPager = findViewById(R.id.view_pager)
@@ -106,7 +104,7 @@ class WelcomeActivity : AppCompatActivity(){
     }
 
     private fun launchHomeScreen() {
-        prefManager.setNotFirstTime(true)
+        ApplicationPrefs.setNotFirstTime(true)
         openMainScreen()
     }
 

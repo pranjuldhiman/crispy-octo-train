@@ -5,4 +5,5 @@ object Constants  {
     val APPLICATION_PREFS = "app_preference"
     val GLOBAL_TAG = "round_up_tag"
     val PHONE_NUMBER = "otp_phone"
+    val IS_LOGGED_IN = "isLoggedIn"
 }

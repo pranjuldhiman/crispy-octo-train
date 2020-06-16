@@ -1,21 +1,16 @@
 package com.android.roundup
 
-import android.app.Activity
-import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.android.roundup.dashboard.MainActivity
 import com.android.roundup.otp.OtpActivity
+import com.android.roundup.utils.ApplicationPrefs
 import com.android.roundup.utils.Constants.GLOBAL_TAG
 import com.android.roundup.utils.Constants.PHONE_NUMBER
-import com.android.roundup.utils.Util
-import com.android.roundup.utils.Util.IS_LOGGED_IN
-import com.android.roundup.utils.Util.getLoginData
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.iid.FirebaseInstanceId
 import kotlinx.android.synthetic.main.login_activity.*
@@ -29,7 +24,7 @@ class LoginActivity : AppCompatActivity(){
         }
 
         setContentView(R.layout.login_activity)
-        if (getLoginData(this, IS_LOGGED_IN)){
+        if (ApplicationPrefs.isLoggedIn()){
             launchMainActivity()
         }else{
             configureUi()

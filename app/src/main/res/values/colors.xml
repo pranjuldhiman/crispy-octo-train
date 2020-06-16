@@ -9,6 +9,8 @@
     <color name="trans_gray">#AA9C9FAF</color>
     <color name="btn_ripple_blue">#5F639C</color>
     <color name="black">#000000</color>
+    <color name="trans_1">#B3BCC5</color>
+    <color name="trans_2">#DFD1F4</color>
 
     <!-- dots inactive colors -->
     <color name="dot_dark_screen1">#3700B3</color>
