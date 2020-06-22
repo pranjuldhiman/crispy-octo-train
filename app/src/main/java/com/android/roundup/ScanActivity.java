@@ -145,10 +145,11 @@ public class ScanActivity extends AppCompatActivity {
         switch (requestCode) {
             case 0:
                 if (resultCode == Activity.RESULT_OK) {
-                    UCrop.of(mImageUri, Uri.fromFile(new File(ScanActivity.this.getCacheDir(), "CropImage.jpg")))
+                    UCrop ucrop = UCrop.of(mImageUri, Uri.fromFile(new File(ScanActivity.this.getCacheDir(), "CropImage.jpg")))
                             .withAspectRatio(1, 1)
-                            .withMaxResultSize(1000, 1000)
-                            .start(this, UCrop.REQUEST_CROP);
+                            .withMaxResultSize(1000, 1000);
+                    ucrop = advancedConfig(ucrop);
+                    ucrop.start(this, UCrop.REQUEST_CROP);
 
                 }
                 break;
@@ -158,6 +159,12 @@ public class ScanActivity extends AppCompatActivity {
                 startActivity(new Intent(ScanActivity.this, PreviewActivity.class).putExtra("imagePath", imagePath));
                 break;
         }
+    }
+
+    private UCrop advancedConfig(UCrop ucrop) {
+        UCrop.Options options = new UCrop.Options();
+        options.setFreeStyleCropEnabled(true);
+        return ucrop.withOptions(options);
     }
 
     private String getRealPathFromURIPath(Uri contentURI, Context activity) {
