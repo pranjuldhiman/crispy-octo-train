@@ -44,7 +44,6 @@ public class YouTubePlayerActivity extends YouTubeBaseActivity implements YouTub
         this.player = player;
         player.setPlayerStateChangeListener(playerStateChangeListener);
         player.setPlaybackEventListener(playbackEventListener);
-
         if (!wasRestored && videoUrl != null) {
             player.cueVideo(Util.getVideoIdFromYoutubeUrl(videoUrl)); // Plays https://www.youtube.com/watch?v=fhWaJi1Hsfo
         }

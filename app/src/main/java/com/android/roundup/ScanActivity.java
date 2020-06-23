@@ -35,6 +35,8 @@ import com.yalantis.ucrop.UCrop;
 
 import java.io.File;
 
+import static androidx.core.content.FileProvider.getUriForFile;
+
 public class ScanActivity extends AppCompatActivity {
     private static final String TAG = ScanActivity.class.getSimpleName();
     private static final int THUMBNAIL_SIZE = 500;
@@ -118,16 +120,31 @@ public class ScanActivity extends AppCompatActivity {
         Intent intent = new Intent("android.media.action.IMAGE_CAPTURE");
         File photo = null;
         try {
-            photo = this.createTemporaryFile("picture", ".jpg");
+            photo = this.createTempFile("picture", ".jpg");
             photo.delete();
         } catch (Exception e) {
         }
+        intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
         //mImageUri = Uri.fromFile(photo);
-        mImageUri = FileProvider.getUriForFile(ScanActivity.this,
-                BuildConfig.APPLICATION_ID + ".provider",
+        mImageUri = getUriForFile(ScanActivity.this,
+                "com.android.roundup.provider",
                 photo);
+
+        /*File imagePath = new File(getFilesDir(), "images");
+        File newFile = new File(imagePath, "default_image.jpg");
+         mImageUri = getUriForFile(this, "com.android.roundup.provider", newFile);*/
+
         intent.putExtra(MediaStore.EXTRA_OUTPUT, mImageUri);
         startActivityForResult(intent, 0);
+    }
+
+    private File createTempFile(String picture, String s) throws Exception {
+        File tempDir = new File(getFilesDir(), "images");
+        //tempDir = new File(tempDir.getAbsolutePath() + "/RoundUp/");
+        if (!tempDir.exists()) {
+            tempDir.mkdirs();
+        }
+        return File.createTempFile(picture, s, tempDir);
     }
 
     private File createTemporaryFile(String picture, String s) throws Exception {
@@ -146,8 +163,6 @@ public class ScanActivity extends AppCompatActivity {
             case 0:
                 if (resultCode == Activity.RESULT_OK) {
                     UCrop.of(mImageUri, Uri.fromFile(new File(ScanActivity.this.getCacheDir(), "CropImage.jpg")))
-                            .withAspectRatio(1, 1)
-                            .withMaxResultSize(1000, 1000)
                             .start(this, UCrop.REQUEST_CROP);
 
                 }

@@ -45,6 +45,7 @@
             android:screenOrientation="unspecified" />
         <activity
             android:name=".otp.OtpActivity"
+            android:windowSoftInputMode="stateAlwaysVisible"
             android:screenOrientation="unspecified" />
         <activity
             android:name="com.yalantis.ucrop.UCropActivity"
@@ -60,7 +61,7 @@
 
         <provider
             android:name="androidx.core.content.FileProvider"
-            android:authorities="${applicationId}.provider"
+            android:authorities="com.android.roundup.provider"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data

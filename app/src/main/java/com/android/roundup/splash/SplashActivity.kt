@@ -19,6 +19,7 @@ class SplashActivity : AppCompatActivity() {
         window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
         setContentView(R.layout.activity_splash)
         configureHandler()
+
     }
 
     private fun configureHandler() {
