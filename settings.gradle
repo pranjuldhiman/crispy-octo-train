@@ -1,2 +1,4 @@
+include ':openCVLibrary'
+include ':documentscanner'
 rootProject.name='Round Up'
 include ':app'

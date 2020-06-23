@@ -15,10 +15,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
+        android:requestLegacyExternalStorage="true"
         android:usesCleartextTraffic="true">
 
         <activity
-            android:name=".splash.SplashActivity"
+            android:name=".ScanActivity"
             android:screenOrientation="unspecified">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -32,7 +33,7 @@
             android:name=".dashboard.MainActivity"
             android:screenOrientation="unspecified" />
         <activity
-            android:name=".ScanActivity"
+            android:name=".splash.SplashActivity"
             android:screenOrientation="unspecified" />
         <activity
             android:name=".resultsactivity.ResultsActivity"

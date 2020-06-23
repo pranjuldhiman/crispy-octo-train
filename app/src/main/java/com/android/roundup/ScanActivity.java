@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
+import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
@@ -22,6 +23,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -31,9 +33,13 @@ import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
 
 import com.android.roundup.resultsactivity.ResultsActivity;
-import com.yalantis.ucrop.UCrop;
+import com.labters.documentscanner.ImageCropActivity;
+import com.labters.documentscanner.helpers.ScannerConstants;
+//import com.yalantis.ucrop.UCrop;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.IOException;
 
 import static androidx.core.content.FileProvider.getUriForFile;
 
@@ -162,27 +168,53 @@ public class ScanActivity extends AppCompatActivity {
         switch (requestCode) {
             case 0:
                 if (resultCode == Activity.RESULT_OK) {
-                    UCrop ucrop = UCrop.of(mImageUri, Uri.fromFile(new File(ScanActivity.this.getCacheDir(), "CropImage.jpg")))
+                   /* UCrop ucrop = UCrop.of(mImageUri, Uri.fromFile(new File(ScanActivity.this.getCacheDir(), "CropImage.jpg")))
                             .withAspectRatio(1, 1)
                             .withMaxResultSize(1000, 1000);
                     ucrop = advancedConfig(ucrop);
-                    ucrop.start(this, UCrop.REQUEST_CROP);
+                    ucrop.start(this, UCrop.REQUEST_CROP);*/
+
+                    try {
+                        ScannerConstants.selectedImageBitmap = MediaStore.Images.Media.getBitmap(
+                                this.getContentResolver(), mImageUri);
+                        startActivityForResult(new Intent(ScanActivity.this, ImageCropActivity.class),
+                                1234);
+
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
 
                 }
                 break;
-            case UCrop.REQUEST_CROP:
+           /* case UCrop.REQUEST_CROP:
                 final Uri mImageUri = UCrop.getOutput(data);
                 String imagePath = getRealPathFromURIPath(mImageUri, this);
                 startActivity(new Intent(ScanActivity.this, PreviewActivity.class).putExtra("imagePath", imagePath));
+                break;*/
+            case 1234:
+                if (ScannerConstants.selectedImageBitmap != null) {
+
+                    startActivity(new Intent(ScanActivity.this, PreviewActivity.class)
+                            .putExtra("imagePath", getRealPathFromURIPath(getImageUri(this, ScannerConstants.selectedImageBitmap), this)));
+
+                } else
+                    Toast.makeText(ScanActivity.this, "Not OK", Toast.LENGTH_LONG).show();
                 break;
         }
     }
 
-    private UCrop advancedConfig(UCrop ucrop) {
+
+    private Uri getImageUri(Context context, Bitmap inImage) {
+        ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+        inImage.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
+        String path = MediaStore.Images.Media.insertImage(context.getContentResolver(), inImage, "abc", null);
+        return Uri.parse(path);
+    }
+   /* private UCrop advancedConfig(UCrop ucrop) {
         UCrop.Options options = new UCrop.Options();
         options.setFreeStyleCropEnabled(true);
         return ucrop.withOptions(options);
-    }
+    }*/
 
     private String getRealPathFromURIPath(Uri contentURI, Context activity) {
         Cursor cursor = activity.getContentResolver().query(contentURI, null, null, null, null);
