@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/white"
     tools:context=".dashboard.MainActivity">
 
@@ -121,9 +121,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
+                android:text="ASK YOUR DOUBT ?"
                 android:textColor="@color/white"
-                android:textSize="@dimen/dim_16sp"
-                android:text="ASK YOUR DOUBT ?" />
+                android:textSize="@dimen/dim_16sp" />
 
             <ImageView
                 android:id="@+id/cam_img"
@@ -140,11 +140,12 @@
                 android:layout_below="@id/cam_img"
                 android:layout_marginTop="@dimen/dim_10dp"
                 android:gravity="center"
-                android:textSize="@dimen/dim_12sp"
+                android:text="Upload your doubt for instant solution"
                 android:textColor="@color/white"
-                android:text="Upload your doubt for instant solution" />
+                android:textSize="@dimen/dim_12sp" />
 
         </RelativeLayout>
+
         <androidx.cardview.widget.CardView
             android:id="@+id/card_selector"
             android:layout_width="match_parent"
@@ -153,6 +154,7 @@
             app:cardBackgroundColor="@color/white"
             app:cardCornerRadius="@dimen/dim_3dp"
             app:cardElevation="@dimen/dim_10dp">
+
             <LinearLayout
                 android:id="@+id/app_selector"
                 android:layout_width="match_parent"
@@ -183,7 +185,7 @@
                         android:background="#ffffff"
                         android:gravity="center"
                         android:text="PDF"
-                        android:textSize="@dimen/dim_12sp"/>
+                        android:textSize="@dimen/dim_12sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -207,7 +209,7 @@
                         android:background="#ffffff"
                         android:gravity="center"
                         android:text="VIDEO"
-                        android:textSize="@dimen/dim_12sp"/>
+                        android:textSize="@dimen/dim_12sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -231,7 +233,7 @@
                         android:background="#ffffff"
                         android:gravity="center"
                         android:text="WHATSAPP"
-                        android:textSize="@dimen/dim_12sp"/>
+                        android:textSize="@dimen/dim_12sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -253,8 +255,8 @@
                         android:layout_height="wrap_content"
                         android:background="#ffffff"
                         android:gravity="center"
-                        android:textSize="@dimen/dim_12sp"
-                        android:text="UPDATES" />
+                        android:text="UPDATES"
+                        android:textSize="@dimen/dim_12sp" />
                 </LinearLayout>
 
             </LinearLayout>
@@ -266,38 +268,48 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/card_selector"
             android:padding="@dimen/dim_10dp">
-            <com.google.android.material.textview.MaterialTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/dim_14sp"
-                android:textColor="@color/black"
-                android:text="@string/latest_videos"/>
 
             <com.google.android.material.textview.MaterialTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="@dimen/dim_14sp"
-                android:textColor="@android:color/holo_blue_dark"
-                android:textAllCaps="true"
-                android:text="@string/view_all"
+                android:text="@string/latest_videos"
+                android:textColor="@color/black"
+                android:textSize="@dimen/dim_14sp" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
                 android:clickable="true"
-                android:layout_alignParentEnd="true"/>
+                android:text="@string/view_all"
+                android:textAllCaps="true"
+                android:textColor="@android:color/holo_blue_dark"
+                android:textSize="@dimen/dim_14sp" />
         </RelativeLayout>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/contentVP"
             android:layout_width="match_parent"
-            android:layout_below="@id/header_layout"
-            android:layout_height="@dimen/dim_100dp"/>
+            android:layout_height="@dimen/dim_100dp"
+            android:layout_below="@id/header_layout" />
 
-        <ImageView
+
+        <androidx.viewpager.widget.ViewPager
             android:id="@+id/viewPager"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:layout_below="@id/contentVP"
             android:layout_marginLeft="@dimen/dim_10dp"
             android:layout_marginRight="@dimen/dim_10dp"
-            android:layout_width="match_parent"
-            android:layout_height="250dp"
-            android:layout_below="@id/contentVP"
             android:src="@drawable/ad" />
+
+        <LinearLayout
+            android:id="@+id/SliderDots"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/viewPager"
+            android:gravity="center_vertical|center_horizontal"
+            android:orientation="horizontal" />
 
     </RelativeLayout>
 

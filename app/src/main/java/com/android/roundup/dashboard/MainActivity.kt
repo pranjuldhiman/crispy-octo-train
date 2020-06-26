@@ -7,9 +7,12 @@ import android.os.Bundle
 import android.view.View
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
+import androidx.viewpager.widget.ViewPager
 import com.android.roundup.R
 import com.android.roundup.ScanActivity
+import com.android.roundup.dashboard.adapter.AdsAdapter
 import kotlinx.android.synthetic.main.activity_main.*
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -29,6 +32,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         configureUi()
+        loadViewPager()
     }
 
     private fun configureUi() {
@@ -36,5 +40,11 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent(this, ScanActivity::class.java))
         }
         cam_img.setOnClickListener { startActivity(Intent(this, ScanActivity::class.java)) }
+    }
+
+    private fun loadViewPager() {
+        val viewPager = findViewById<View>(R.id.viewPager) as ViewPager
+        val viewPagerAdapter = AdsAdapter(this)
+        viewPager.adapter = viewPagerAdapter
     }
 }
