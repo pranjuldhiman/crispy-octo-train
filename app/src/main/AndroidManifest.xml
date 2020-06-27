@@ -48,10 +48,6 @@
             android:name=".otp.OtpActivity"
             android:windowSoftInputMode="stateAlwaysVisible"
             android:screenOrientation="unspecified" />
-        <activity
-            android:name="com.yalantis.ucrop.UCropActivity"
-            android:screenOrientation="unspecified"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
 
         <activity android:name=".PreviewActivity"
             android:screenOrientation="unspecified"/>
