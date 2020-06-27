@@ -2,11 +2,14 @@ package com.android.roundup;
 
 import android.Manifest;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
@@ -40,6 +43,7 @@ import com.labters.documentscanner.helpers.ScannerConstants;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 
 import static androidx.core.content.FileProvider.getUriForFile;
 
@@ -123,7 +127,7 @@ public class ScanActivity extends AppCompatActivity {
         win.setAttributes(winParams);
     }
     private void startCameraSource() {
-        Intent intent = new Intent("android.media.action.IMAGE_CAPTURE");
+        /*Intent intent = new Intent("android.media.action.IMAGE_CAPTURE");
         File photo = null;
         try {
             photo = this.createTempFile("picture", ".jpg");
@@ -131,17 +135,48 @@ public class ScanActivity extends AppCompatActivity {
         } catch (Exception e) {
         }
         intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-        //mImageUri = Uri.fromFile(photo);
-        mImageUri = getUriForFile(ScanActivity.this,
-                "com.android.roundup.provider",
-                photo);
-
-        /*File imagePath = new File(getFilesDir(), "images");
-        File newFile = new File(imagePath, "default_image.jpg");
-         mImageUri = getUriForFile(this, "com.android.roundup.provider", newFile);*/
-
+        mImageUri = getUriForFile(ScanActivity.this, "com.android.roundup.provider", photo);
         intent.putExtra(MediaStore.EXTRA_OUTPUT, mImageUri);
-        startActivityForResult(intent, 0);
+        startActivityForResult(intent, 0);*/
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage(getString(R.string.select_picture));
+        builder.setPositiveButton(getString(R.string.browse), new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.dismiss();
+                Intent intent = new Intent(Intent.ACTION_PICK);
+                intent.setType("image/*");
+                startActivityForResult(intent, 1);
+            }
+        });
+
+        builder.setNegativeButton(getString(R.string.camera), new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                Intent intent = new Intent("android.media.action.IMAGE_CAPTURE");
+                File photo = null;
+                try {
+                    photo = createTempFile("picture", ".jpg");
+                    photo.delete();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                mImageUri = getUriForFile(ScanActivity.this, "com.android.roundup.provider", photo);
+                intent.putExtra(MediaStore.EXTRA_OUTPUT, mImageUri);
+                startActivityForResult(intent, 0);
+            }
+        });
+
+        builder.setNeutralButton(getString(R.string.cancel), new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.dismiss();
+            }
+        });
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 
     private File createTempFile(String picture, String s) throws Exception {
@@ -177,13 +212,26 @@ public class ScanActivity extends AppCompatActivity {
                     try {
                         ScannerConstants.selectedImageBitmap = MediaStore.Images.Media.getBitmap(
                                 this.getContentResolver(), mImageUri);
-                        startActivityForResult(new Intent(ScanActivity.this, ImageCropActivity.class),
-                                1234);
-
+                        startActivityForResult(new Intent(ScanActivity.this, ImageCropActivity.class), 1234);
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
+                }
+                break;
 
+            case 1:
+                assert data != null;
+                Uri selectedImage = data.getData();
+                Bitmap bitmap;
+                try {
+                    if (selectedImage != null){
+                        InputStream inputStream = getContentResolver().openInputStream(selectedImage);
+                        bitmap = BitmapFactory.decodeStream(inputStream);
+                        ScannerConstants.selectedImageBitmap = bitmap;
+                        startActivityForResult(new Intent(this, ImageCropActivity.class),1234);
+                    }
+                } catch (Exception e ) {
+                    e.printStackTrace();
                 }
                 break;
            /* case UCrop.REQUEST_CROP:
@@ -194,7 +242,7 @@ public class ScanActivity extends AppCompatActivity {
             case 1234:
                 if (ScannerConstants.selectedImageBitmap != null) {
 
-                    startActivity(new Intent(ScanActivity.this, PreviewActivity.class)
+                    startActivity(new Intent(ScanActivity.this, ResultsActivity.class)
                             .putExtra("imagePath", getRealPathFromURIPath(getImageUri(this, ScannerConstants.selectedImageBitmap), this)));
 
                 } else

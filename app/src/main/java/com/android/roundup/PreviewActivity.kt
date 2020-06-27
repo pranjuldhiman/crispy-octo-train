@@ -25,7 +25,7 @@ class PreviewActivity : AppCompatActivity() {
 
 
                 img_snap.setImageBitmap(bitmap)
-                //ImageTextReader.readTextFromImage(bitmap, textView_result)
+                ImageTextReader.readTextFromImage(bitmap, textView_result)
                 btn_continue.setOnClickListener {
                     startActivity(
                         Intent(this, ResultsActivity::class.java).putExtra(

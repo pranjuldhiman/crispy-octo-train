@@ -19,7 +19,7 @@
         android:usesCleartextTraffic="true">
 
         <activity
-            android:name=".ScanActivity"
+            android:name=".splash.SplashActivity"
             android:screenOrientation="unspecified">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -33,7 +33,7 @@
             android:name=".dashboard.MainActivity"
             android:screenOrientation="unspecified" />
         <activity
-            android:name=".splash.SplashActivity"
+            android:name=".ScanActivity"
             android:screenOrientation="unspecified" />
         <activity
             android:name=".resultsactivity.ResultsActivity"

@@ -7,7 +7,7 @@ class App : Application() {
 
     override fun onCreate() {
         super.onCreate()
-        Mint.initAndStartSession(this, "4d934f8d")
+        //Mint.initAndStartSession(this, "4d934f8d")
         mSelf = this
     }
 
