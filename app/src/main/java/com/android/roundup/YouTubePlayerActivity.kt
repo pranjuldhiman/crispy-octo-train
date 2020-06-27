@@ -5,13 +5,13 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import com.android.roundup.utils.Config
-import com.android.roundup.utils.Util
 import com.google.android.youtube.player.YouTubeBaseActivity
 import com.google.android.youtube.player.YouTubeInitializationResult
 import com.google.android.youtube.player.YouTubePlayer
 import com.google.android.youtube.player.YouTubePlayer.PlaybackEventListener
 import com.google.android.youtube.player.YouTubePlayer.PlayerStateChangeListener
 import com.google.android.youtube.player.YouTubePlayerView
+import java.util.regex.Pattern
 
 class YouTubePlayerActivity : YouTubeBaseActivity(),
     YouTubePlayer.OnInitializedListener {
@@ -43,7 +43,7 @@ class YouTubePlayerActivity : YouTubeBaseActivity(),
         player.setPlayerStateChangeListener(playerStateChangeListener)
         player.setPlaybackEventListener(playbackEventListener)
         if (!wasRestored && videoUrl != null) {
-            player.cueVideo(Util.getVideoIdFromYoutubeUrl(videoUrl)) // Plays https://www.youtube.com/watch?v=fhWaJi1Hsfo
+            player.cueVideo(getVideoIdFromYoutubeUrl(videoUrl)) // Plays https://www.youtube.com/watch?v=fhWaJi1Hsfo
         }
     }
 
@@ -138,5 +138,24 @@ class YouTubePlayerActivity : YouTubeBaseActivity(),
 
     companion object {
         private const val RECOVERY_REQUEST = 1
+    }
+
+    /**
+     * Get id from youtube url
+     *
+     * @param url
+     * @return
+     */
+    fun getVideoIdFromYoutubeUrl(url: String?): String? {
+        var videoId: String? = null
+        val regex =
+            "http(?:s)?:\\/\\/(?:m.)?(?:www\\.)?youtu(?:\\.be\\/|be\\.com\\/(?:watch\\?(?:feature=youtu.be\\&)?v=|v\\/|embed\\/|user\\/(?:[\\w#]+\\/)+))([^&#?\\n]+)"
+        val pattern =
+            Pattern.compile(regex, Pattern.CASE_INSENSITIVE)
+        val matcher = pattern.matcher(url)
+        if (matcher.find()) {
+            videoId = matcher.group(1)
+        }
+        return videoId
     }
 }
