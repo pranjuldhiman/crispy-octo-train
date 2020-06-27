@@ -34,8 +34,6 @@ android {
 }
 
 dependencies {
-    implementation project(path: ':openCVLibrary')
-    implementation project(path: ':documentscanner')
     def retrofit_version = "2.7.1"
     def okhttp3_version = "4.2.2"
     def lifecycle_version = "2.1.0"
@@ -102,11 +100,10 @@ dependencies {
     implementation 'com.google.firebase:firebase-ml-vision:24.0.3'
     implementation 'com.squareup.picasso:picasso:2.5.2'
     implementation 'com.github.mukeshsolanki:android-otpview-pinview:2.1.0'
-//    implementation 'com.github.yalantis:ucrop:2.2.3-native'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     implementation files('libs/mint-5.2.5.jar')
     implementation 'io.reactivex.rxjava2:rxandroid:2.1.0'
-    //    implementation project(':documentscanner')
+    api 'com.theartofdev.edmodo:android-image-cropper:2.8.0'
 }
