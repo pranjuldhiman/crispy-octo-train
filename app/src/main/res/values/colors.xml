@@ -26,6 +26,16 @@
     <color name="form_bg_color">#eeeeee</color>
 
     <color name="transparent_bg">#900E0E0E</color>
+    <color name="dark_transparent_bg">#C90E0E0E</color>
+
+    <color name="home_grad0">#b2bcc5</color>
+    <color name="home_grad1">#ddcfee</color>
+    <color name="blue">#0A75BC</color>
+    <color name="borderstroke">#C8C8C8</color>
+
+    <color name="grey">#9E9E9E</color>
+    <color name="toolbar">#363C94</color>
+
 
     <array name="array_dot_active">
         <item>@color/dot_light_screen1</item>

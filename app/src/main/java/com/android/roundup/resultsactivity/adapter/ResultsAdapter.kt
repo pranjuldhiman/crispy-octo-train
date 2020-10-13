@@ -1,6 +1,5 @@
 package com.android.roundup.resultsactivity.adapter
 
-import android.R.attr.colorPrimary
 import android.content.Context
 import android.graphics.drawable.ColorDrawable
 import android.os.Build
@@ -9,7 +8,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.android.roundup.R
 import com.android.roundup.models.Data
@@ -40,20 +38,17 @@ class ResultsAdapter(
     inner class ResultHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
         fun bind(position: Int, searchRes: Data){
             itemView.apply {
-                setOnClickListener { onAdapterClicked(searchRes) }
+                thumbnail.setOnClickListener { onAdapterClicked(searchRes) }
                 val bgColor = RoundUpHelper.getRandomColor()
-                val txtColor = colorPrimary and 0x00FFFFFF or (0x40 shl 24)
                 frame_thumbnail.foreground = ColorDrawable(bgColor)
-                setHtmlText(txt_description, searchRes.description)
-                //txt_description.setDisplayText(searchRes.description)
-                txt_description.setTextColor(txtColor)
+                txt_description.loadData(searchRes.description, "text/html", "UTF-8")
             }
         }
 
         private fun setHtmlText(view: TextView, tvContent: String){
             val imageGetter = PicassoImageGetter(context, view)
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                view.text = Html.fromHtml(tvContent, Html.FROM_HTML_MODE_LEGACY, URLImageParser(view, context), null);
+                view.text = Html.fromHtml(tvContent, Html.FROM_HTML_MODE_LEGACY, URLImageParser(view, context), null)
             } else {
                 view.text = Html.fromHtml(tvContent, URLImageParser(view, context), null);
             }

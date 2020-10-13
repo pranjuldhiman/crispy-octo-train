@@ -1,7 +1,6 @@
 package com.android.roundup
 
 import android.app.Application
-import com.splunk.mint.Mint
 
 class App : Application() {
 

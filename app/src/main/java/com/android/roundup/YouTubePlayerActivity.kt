@@ -20,6 +20,7 @@ class YouTubePlayerActivity : YouTubeBaseActivity(),
     private var playbackEventListener: MyPlaybackEventListener? = null
     private var player: YouTubePlayer? = null
     private var videoUrl: String? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.youtube_activity)

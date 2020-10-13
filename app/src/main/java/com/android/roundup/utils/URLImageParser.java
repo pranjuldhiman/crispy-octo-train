@@ -1,6 +1,9 @@
 package com.android.roundup.utils;
+import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.net.URL;
+import java.net.URLDecoder;
+import java.nio.charset.StandardCharsets;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -10,6 +13,7 @@ import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.text.Html.ImageGetter;
 import android.util.Base64;
+import android.util.Log;
 import android.view.View;
 public class URLImageParser implements ImageGetter {
     Context context;
@@ -32,7 +36,7 @@ public class URLImageParser implements ImageGetter {
             URLDrawable urlDrawable = new URLDrawable();
             ImageGetterAsyncTask asyncTask = new ImageGetterAsyncTask(urlDrawable);
             asyncTask.execute(source);
-            return urlDrawable; //return reference to URLDrawable where We will change with actual image from the src tag
+            return urlDrawable;
         }
     }
 
@@ -51,17 +55,29 @@ public class URLImageParser implements ImageGetter {
 
         @Override
         protected void onPostExecute(Drawable result) {
-            urlDrawable.setBounds(0, 0, 0 + result.getIntrinsicWidth(), 0 + result.getIntrinsicHeight()); //set the correct bound according to the result from HTTP call
-            urlDrawable.drawable = result; //change the reference of the current drawable to the result from the HTTP call
-            URLImageParser.this.container.invalidate(); //redraw the image by invalidating the container
+            if (result != null){
+                urlDrawable.setBounds(0, 0, 0 + result.getIntrinsicWidth(), 0 + result.getIntrinsicHeight());
+                urlDrawable.drawable = result;
+                URLImageParser.this.container.invalidate();
+            }else {
+                Log.d("Error>>>>>", "Drawable not created");
+            }
         }
 
         public Drawable fetchDrawable(String urlString) {
             try {
-                InputStream is = (InputStream) new URL(urlString).getContent();
-                Drawable drawable = Drawable.createFromStream(is, "src");
-                drawable.setBounds(0, 0, 0 + drawable.getIntrinsicWidth(), 0 + drawable.getIntrinsicHeight());
-                return drawable;
+                ByteArrayOutputStream buffer = new ByteArrayOutputStream();
+                InputStream is = (InputStream) new URL(URLDecoder.decode(urlString, StandardCharsets.UTF_8.name())).openStream();
+                //Drawable drawable = Drawable.createFromStream(is, "src");
+                //drawable.setBounds(0, 0, 0 + drawable.getIntrinsicWidth(), 0 + drawable.getIntrinsicHeight());
+                //return drawable;
+                int nRead;
+                byte[] data = new byte[16384];
+                while ((nRead = is.read(data, 0, data.length)) != -1) {
+                    buffer.write(data, 0, nRead);
+                }
+                byte[] bufferArray =  buffer.toByteArray();
+                return new BitmapDrawable(context.getResources(), BitmapFactory.decodeByteArray(bufferArray, 0, bufferArray.length));
             } catch (Exception e) {
                 return null;
             }

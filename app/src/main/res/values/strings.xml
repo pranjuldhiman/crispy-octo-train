@@ -21,4 +21,28 @@
     <string name="camera">Camera</string>
     <string name="browse">Browse</string>
     <string name="cancel">Cancel</string>
+    <string name="pdf">TEST</string>
+    <string name="video">VIDEO</string>
+    <string name="whatsapp">WHATSAPP</string>
+    <string name="update">JOB\n NOTIFICATION</string>
+    <string name="aboutus">ABOUT US</string>
+    <string name="aboutussmall">About us</string>
+    <string name="share">SHARE</string>
+    <string name="feedback">QUERY</string>
+    <string name="contact">CONTACT US</string>
+    <string name="banking_exam_video">Banking Exams Videos</string>
+    <string name="ins_exam_video">Insurance Exams Videos</string>
+    <string name="entermobileno">Enter Mobile Number</string>
+    <string name="login">Login</string>
+    <string name="termsconditions"><![CDATA[Terms & Condition]]></string>
+    <string name="iagreetermcondition">I agree</string>
+    <string name="sliderthree">Paao Apne Doubts Ka\n Instant Solution bas\n ek click pe</string>
+    <string name="home">Home</string>
+    <string name="profile">Profile</string>
+    <string name="library">Library</string>
+    <string name="mobileno">Mobile No</string>
+    <string name="name">Name</string>
+    <string name="email">Email</string>
+    <string name="notification">Notification</string>
+
 </resources>

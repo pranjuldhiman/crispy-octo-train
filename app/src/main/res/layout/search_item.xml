@@ -21,12 +21,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dim_200dp">
 
-                <com.google.android.material.textview.MaterialTextView
+                <!--<com.google.android.material.textview.MaterialTextView
                     android:id="@+id/txt_description"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:text="Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups."
                     android:textSize="@dimen/dim_25sp"
+                    android:padding="@dimen/dim_10dp"/>-->
+
+                <WebView
+                    android:id="@+id/txt_description"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:padding="@dimen/dim_10dp"/>
 
 

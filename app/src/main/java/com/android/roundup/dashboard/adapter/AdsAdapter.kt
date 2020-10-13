@@ -8,8 +8,10 @@ import android.widget.ImageView
 import androidx.viewpager.widget.PagerAdapter
 import androidx.viewpager.widget.ViewPager
 import com.android.roundup.R
+import com.android.roundup.models.Banners
+import com.squareup.picasso.Picasso
 
-class AdsAdapter(private val context: Context) : PagerAdapter() {
+class AdsAdapter(private val context: Context,bannerimg :List<Banners>) : PagerAdapter() {
     private var layoutInflater: LayoutInflater? = null
     private val images = arrayOf(
         R.drawable.ad,
@@ -17,8 +19,10 @@ class AdsAdapter(private val context: Context) : PagerAdapter() {
         R.drawable.ad
     )
 
+    var banner:List<Banners> = bannerimg
+
     override fun getCount(): Int {
-        return images.size
+        return banner.size
     }
 
     override fun isViewFromObject(
@@ -38,7 +42,11 @@ class AdsAdapter(private val context: Context) : PagerAdapter() {
             layoutInflater!!.inflate(R.layout.ad_holder, null)
         val imageView =
             view.findViewById<View>(R.id.imageView) as ImageView
-        imageView.setImageResource(images[position])
+
+      //  imageView.setImageResource(banner[position].bannerimage)
+        Picasso.with(context).load("http://trainingscholar.com/studyapp/assets/images/"+banner[position].bannerimage).placeholder(R.drawable.roundup_logo).error(R.drawable.roundup_logo).noFade().into(imageView);
+
+
         val vp = container as ViewPager
         vp.addView(view, 0)
         return view

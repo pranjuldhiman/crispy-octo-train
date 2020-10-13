@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/dim_250dp"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_marginStart="@dimen/dim_10dp"
+    android:layout_marginEnd="@dimen/dim_10dp"
+    app:cardBackgroundColor="@color/white"
+    app:cardCornerRadius="@dimen/dim_10dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dim_190dp">
+
+            <ImageView
+                android:id="@+id/mainimg"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                />
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="gone"
+                android:background="@drawable/top_rounded_thumb_bg">
+
+                <ImageView
+                    android:id="@+id/img_play_video"
+                    android:layout_width="@dimen/dim_50dp"
+                    android:layout_height="@dimen/dim_50dp"
+                    android:padding="@dimen/dim_5dp"
+                    android:src="@drawable/ic_play"
+                    android:layout_gravity="center"
+                    tools:ignore="ContentDescription" />
+
+            </FrameLayout>
+
+        </RelativeLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dim_60dp"
+            android:orientation="vertical"
+            android:padding="@dimen/dim_10dp">
+            <TextView
+                android:id="@+id/txt_head_line"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Loreum Ipsum is simple dummy text"
+                android:textColor="@color/black"
+                android:textSize="@dimen/dim_14sp"
+                android:textStyle="bold"
+                android:maxLines="1"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/txt_sub_line"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.7"
+                    android:textSize="@dimen/dim_12sp"
+                    android:visibility="gone"
+                    android:textColor="@color/gray"
+                    android:text="It is a long establishment fact that a reader"/>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/videotime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="4:50"
+                    android:visibility="gone"
+                    android:drawableStart="@drawable/video_icon"
+                    app:layout_constraintTop_toBottomOf="@+id/videodesc"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:textColor="@color/black"
+                    android:textAllCaps="true"
+                    android:textSize="10sp"
+                    android:gravity="center"/>
+
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

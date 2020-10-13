@@ -5,18 +5,18 @@ import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.view.View
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.android.roundup.R
+import com.android.roundup.scan.ScanActivity
 import com.android.roundup.YouTubePlayerActivity
 import com.android.roundup.resultsactivity.adapter.ResultsAdapter
 import com.android.roundup.utils.ImageTextReader
 import com.android.roundup.utils.RoundUpHelper
-import kotlinx.android.synthetic.main.activity_preview.*
 import kotlinx.android.synthetic.main.result_activity.*
-import kotlinx.android.synthetic.main.result_activity.img_snap
 import java.io.File
 import java.io.FileInputStream
 
@@ -34,10 +34,12 @@ class ResultsActivity: AppCompatActivity() {
         img_back.setOnClickListener {
             onBackPressed()
         }
+
         val imagePath = intent.getStringExtra("imagePath")
         imagePath?.let {
             val bitmap: Bitmap? = getBitMap(imagePath)
             bitmap?.let {
+                img_snap.visibility = View.VISIBLE
                 img_snap.setImageBitmap(bitmap)
                 ImageTextReader.readTextFromImage(bitmap, textView_results)
                 textView_results.addTextChangedListener {
@@ -45,15 +47,10 @@ class ResultsActivity: AppCompatActivity() {
                 }
 
                 val searchTag = intent?.getStringExtra("SearchTag")
-                searchTag?.let { viewModel.getResultsBySearchTag(searchTag) }
-                /*btn_continue.setOnClickListener {
-                    startActivity(
-                        Intent(this, ResultsActivity::class.java).putExtra(
-                            "SearchTag",
-                            textView_result.text.toString()
-                        )
-                    )
-                }*/
+                searchTag?.let {
+                    img_snap.visibility = View.GONE
+                    viewModel.getResultsBySearchTag(searchTag)
+                }
             }
         }
     }
@@ -84,6 +81,12 @@ class ResultsActivity: AppCompatActivity() {
                     },this@ResultsActivity, it.orEmpty())
                 }
             })
+
+            serviceException.observe(this@ResultsActivity, Observer {
+                progress_bar.visibility = View.INVISIBLE
+                rcv_results.visibility = View.GONE
+                showMessageDialog(it.orEmpty())
+            })
         }
     }
 
@@ -91,7 +94,23 @@ class ResultsActivity: AppCompatActivity() {
         super.onResume()
         val searchTag = intent.getStringExtra("SearchTag")
         searchTag?.let {
+            img_snap.visibility = View.GONE
             viewModel.getResultsBySearchTag(searchTag)
+        }
+    }
+
+    private fun showMessageDialog(msgWrapper: String?) {
+        msgWrapper?.let {
+            val msg = it
+            AlertDialog.Builder(this)
+                .setMessage(msg)
+                .setPositiveButton(android.R.string.ok) { _, _ ->
+                    startActivity(Intent(this, ScanActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK))
+                }
+                .create().run {
+                    setCanceledOnTouchOutside(false)
+                    show()
+                }
         }
     }
 }

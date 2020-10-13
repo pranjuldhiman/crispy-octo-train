@@ -16,6 +16,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager.widget.PagerAdapter
 import androidx.viewpager.widget.ViewPager
+import com.android.roundup.login.LoginActivity
 import com.android.roundup.utils.ApplicationPrefs
 
 class WelcomeActivity : AppCompatActivity(){
@@ -54,7 +55,6 @@ class WelcomeActivity : AppCompatActivity(){
     private var viewPagerPageChangeListener: ViewPager.OnPageChangeListener = object : ViewPager.OnPageChangeListener {
         override fun onPageSelected(position: Int) {
             addBottomDots(position)
-
         }
 
         override fun onPageScrolled(arg0: Int, arg1: Float, arg2: Int) {}

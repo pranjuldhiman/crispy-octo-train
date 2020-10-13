@@ -11,7 +11,6 @@ import com.android.roundup.apprepository.RoundUpRepositoryImpl
 import com.android.roundup.models.Data
 import com.android.roundup.models.MODSearchResponse
 import com.android.roundup.networkhelper.ServiceResult
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.gson.Gson
 import kotlinx.coroutines.launch
 
@@ -23,12 +22,16 @@ class ResultsViewModel(private val context: Context): ViewModel() {
     val listOfSearchResult: LiveData<List<Data>?> = _listOfSearchResult
 
     fun getResultsBySearchTag(searchTag: String) {
-        viewModelScope.launch {
-            when(val serviceResult =
-                roundUpRepository.getSearchResults(searchTag)){
-                is ServiceResult.Success -> onSuccessResponse(serviceResult.data)
-                is ServiceResult.Error -> onFailure(serviceResult.exception)
+        if (searchTag.isNotBlank()){
+            viewModelScope.launch {
+                when(val serviceResult =
+                    roundUpRepository.getSearchResults(searchTag)){
+                    is ServiceResult.Success -> onSuccessResponse(serviceResult.data)
+                    is ServiceResult.Error -> onFailure(serviceResult.exception)
+                }
             }
+        }else{
+            _serviceException.value = "Please search with at least one query!!"
         }
     }
 
@@ -39,7 +42,11 @@ class ResultsViewModel(private val context: Context): ViewModel() {
     private fun onSuccessResponse(data: MODSearchResponse?) {
         data?.let {
             Log.d("Response", Gson().toJson(data))
-            _listOfSearchResult.value = data.data
+            if (data.success == 200){
+                _listOfSearchResult.value = data.data
+            }else{
+                _serviceException.value = "We could not found any search result for the given query!"
+            }
         }
     }
 }
