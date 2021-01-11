@@ -1,25 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginStart="@dimen/dim_10dp"
-    android:layout_marginEnd="@dimen/dim_10dp"
-    app:cardBackgroundColor="@color/white"
-    app:cardCornerRadius="@dimen/dim_10dp">
     <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dim_60dp"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="@dimen/dim_10dp">
-            <TextView
-                android:id="@+id/notificationtxt"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Loreum Ipsum is simple dummy text"
-                android:textColor="@color/black"
-                android:textSize="@dimen/dim_14sp"
-                android:textStyle="bold"
-                android:maxLines="1"/>
-        </LinearLayout>
-</androidx.cardview.widget.CardView>
+            android:padding="@dimen/dim_5dp">
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:layout_width="14dp"
+        android:layout_height="14dp"
+        android:layout_marginTop="@dimen/dim_5dp"
+        android:src="@drawable/notification_circle_icon"/>
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Sheldon Murphy"
+        android:textColor="@color/black"
+        android:layout_marginStart="@dimen/dim_10dp"
+        android:textSize="@dimen/dim_16sp"
+        android:maxLines="1"/>
+
+</LinearLayout>
+
+        <TextView
+            android:id="@+id/notificationtxt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Sheldon Murphy"
+            android:maxLines="2"
+            android:layout_marginStart="27dp"
+            android:textSize="@dimen/dim_14sp"
+            />
+
+        <TextView
+            android:id="@+id/datetime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:layout_marginStart="27dp"
+            android:textSize="@dimen/dim_14sp"
+            />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginStart="@dimen/dim_5dp"
+            android:layout_marginEnd="@dimen/dim_5dp"
+            android:layout_marginTop="@dimen/dim_10dp"
+            android:background="@color/gray"/>
+
+</LinearLayout>

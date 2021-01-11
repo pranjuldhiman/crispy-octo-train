@@ -1,27 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="240dp"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_marginStart="@dimen/dim_10dp"
-    android:layout_marginEnd="@dimen/dim_10dp"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="8dp"
     app:cardBackgroundColor="@color/white"
-    app:cardCornerRadius="@dimen/dim_10dp">
+    app:cardElevation="@dimen/dim_5dp"
+    app:cardCornerRadius="@dimen/dim_3dp">
 
-    <LinearLayout
+    <RelativeLayout
+        android:id="@+id/mainvideolayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-        <RelativeLayout
+        android:layout_height="match_parent">
+        <FrameLayout
+            android:id="@+id/mainlayout"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dim_190dp">
+            android:layout_height="200dp">
 
-
-            <FrameLayout
-                android:id="@+id/frame_thumbnail"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/dim_200dp">
 
                 <!--<com.google.android.material.textview.MaterialTextView
                     android:id="@+id/txt_description"
@@ -38,95 +33,21 @@
                     android:padding="@dimen/dim_10dp"/>
 
 
-            </FrameLayout>
             <ImageView
-                android:id="@+id/thumbnail"
+                android:id="@+id/vidthumbnail"
                 android:layout_width="@dimen/dim_50dp"
                 android:layout_height="@dimen/dim_50dp"
                 android:layout_gravity="center"
                 android:layout_centerInParent="true"
                 android:src="@drawable/ic_play_button" />
 
-          <!--  <ImageView
-                android:id="@+id/videimg"
+            <RelativeLayout
+                android:id="@+id/democlick"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"/>
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
 
-                <ImageView
-                    android:id="@+id/img_play_video"
-                    android:layout_width="@dimen/dim_50dp"
-                    android:layout_height="@dimen/dim_50dp"
-                    android:padding="@dimen/dim_5dp"
-                    android:src="@drawable/ic_play"
-                    android:layout_gravity="center"
-                    tools:ignore="ContentDescription" />
-
-            </FrameLayout>-->
-        </RelativeLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/rel_frame"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:layout_marginStart="@dimen/dim_10dp"
-            android:layout_marginEnd="@dimen/dim_10dp"
-            android:layout_marginTop="@dimen/dim_10dp"
-            android:weightSum="2">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="left|center_vertical">
-
-                <ImageView
-                    android:id="@+id/thumb_up"
-                    android:layout_width="@dimen/likeicon"
-                    android:layout_height="@dimen/likeicon"
-                    android:src="@drawable/ic_like" />
-
-                <ImageView
-                    android:layout_width="@dimen/likeicon"
-                    android:layout_height="@dimen/likeicon"
-                    android:layout_marginStart="5dp"
-                    android:rotation="180"
-                    android:src="@drawable/ic_like" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="right|center_vertical">
-
-                <ImageView
-                    android:id="@+id/message"
-                    android:layout_width="@dimen/likeicon"
-                    android:layout_height="@dimen/likeicon"
-                    android:src="@drawable/ic_comment" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Comment"
-                    android:textSize="@dimen/dim_16sp"
-                    android:layout_marginStart="@dimen/dim_5dp"
-                    android:textColor="#000000" />
-
-                <ImageView
-                    android:layout_width="@dimen/likeicon"
-                    android:layout_height="@dimen/likeicon"
-                    android:layout_marginStart="@dimen/dim_5dp"
-                    android:padding="@dimen/dim_3dp"
-                    android:src="@drawable/ic_share" />
-
-            </LinearLayout>
+        </FrameLayout>
 
 
-        </LinearLayout>
-    </LinearLayout>
+    </RelativeLayout>
 </androidx.cardview.widget.CardView>

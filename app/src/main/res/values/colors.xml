@@ -50,4 +50,7 @@
         <item>@color/dot_dark_screen3</item>
         <item>@color/dot_dark_screen4</item>
     </array>
+    <color name="login_bg">#d9d9d2</color>
+    <color name="login_bg_gr">#0093e9</color>
+    <color name="login_bg_gra">#36c2cf</color>
 </resources>

@@ -10,6 +10,7 @@
     app:cardCornerRadius="@dimen/dim_10dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/mainpdflayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
@@ -61,6 +62,5 @@
             app:layout_constraintStart_toEndOf="@+id/pdf_img"
             android:textSize="@dimen/dim_12sp"
             />-->
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

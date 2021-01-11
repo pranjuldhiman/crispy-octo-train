@@ -1,15 +1,163 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:tools="http://schemas.android.com/tools"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:orientation="vertical"
-              tools:context=".YouTubePlayerActivity">
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    tools:context=".youtube.YouTubePlayerActivity">
 
     <com.google.android.youtube.player.YouTubePlayerView
         android:id="@+id/youtube_view"
         android:layout_width="match_parent"
+        
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         android:layout_height="wrap_content" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/likedislikelayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dim_10dp"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            app:layout_constraintTop_toBottomOf="@+id/youtube_view"
+            android:gravity="left|center_vertical">
 
 
-</LinearLayout>
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/like"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:src="@drawable/thumbup_icon"
+                />
+
+            <TextView
+                android:id="@+id/totallike"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textSize="10sp"
+                app:layout_constraintTop_toBottomOf="@+id/like"
+                app:layout_constraintStart_toStartOf="@+id/like"
+                app:layout_constraintEnd_toEndOf="@+id/like"
+                android:textColor="#000000" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/dislike"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/like"
+                android:layout_marginStart="@dimen/dim_10dp"
+                android:src="@drawable/thumbdown_icon"
+                />
+
+            <TextView
+                android:id="@+id/totaldislike"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textSize="10sp"
+                app:layout_constraintTop_toBottomOf="@+id/dislike"
+                app:layout_constraintStart_toStartOf="@+id/dislike"
+                app:layout_constraintEnd_toEndOf="@+id/dislike"
+                android:textColor="#000000" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/comment"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/share"
+                android:layout_marginStart="@dimen/dim_10dp"
+                android:src="@drawable/comment_icon"
+                android:layout_marginEnd="10dp"
+                />
+
+            <TextView
+                android:id="@+id/totalcomment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textSize="10sp"
+                app:layout_constraintTop_toBottomOf="@+id/comment"
+                app:layout_constraintStart_toStartOf="@+id/comment"
+                app:layout_constraintEnd_toEndOf="@+id/comment"
+                android:textColor="#000000" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/share"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginStart="@dimen/dim_10dp"
+                android:src="@drawable/share_icon"
+                />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+   <TextView
+        android:id="@+id/allcommenttxtview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="All Comments"
+        android:textSize="@dimen/dim_16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/likedislikelayout"
+        android:layout_marginTop="@dimen/dim_10dp"
+        android:layout_marginStart="@dimen/dim_5dp"
+        android:textColor="#000000" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/comment_list"
+        android:layout_width="match_parent"
+        app:layout_constraintTop_toBottomOf="@+id/allcommenttxtview"
+        app:layout_constraintBottom_toTopOf="@+id/layout_chatbox"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="@dimen/dim_10dp"
+        android:layout_height="0dp"/>
+
+    <LinearLayout
+        android:id="@+id/layout_chatbox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:minHeight="48dp"
+
+        android:background="#ffffff"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent">
+
+        <EditText
+            android:id="@+id/edittext_chatbox"
+            android:hint="Enter message"
+            android:background="@android:color/transparent"
+            android:layout_gravity="center"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:maxLines="6"/>
+
+        <Button
+            android:id="@+id/sendmsg"
+            android:text="SEND"
+            android:textSize="14dp"
+            android:background="?attr/selectableItemBackground"
+            android:clickable="true"
+            android:layout_width="64dp"
+            android:layout_height="48dp"
+            android:gravity="center"
+            android:layout_gravity="bottom" />
+
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

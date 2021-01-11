@@ -7,19 +7,20 @@
   },
   "client": [
     {
+
       "client_info": {
-        "mobilesdk_app_id": "1:782700706479:android:62b55d265f20e961b1f25a",
+        "mobilesdk_app_id": "1:782700706479:android:de02a267717f97c4b1f25a",
         "android_client_info": {
-          "package_name": "com.android.roundup"
+          "package_name": "com.rs.roundupclasses"
         }
       },
       "oauth_client": [
         {
-          "client_id": "782700706479-lgfsfq0fj7agl40g7m54ngh4ku8t4q7h.apps.googleusercontent.com",
+          "client_id": "782700706479-cg6e40vr5fhpfs6favtsf05pf0okmtjg.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.android.roundup",
-            "certificate_hash": "c3d9ed3448256c06ae5aafd28f12e64077a0817e"
+            "package_name": "com.rs.roundupclasses",
+            "certificate_hash": "2f1318da23faf40b6d277e7e523fd0cfb4e30214"
           }
         },
         {

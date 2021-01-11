@@ -4,9 +4,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:gravity="center"
     android:layout_height="match_parent"
+    android:background="@color/login_bg"
     android:theme="@style/Theme.MaterialComponents.Light">
 
-   <!-- <LinearLayout
+    <LinearLayout
         android:id="@+id/linearLay"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -29,15 +30,18 @@
             android:gravity="right"
             android:text="Enter your mobile number"
             android:textColor="#ffffff"
+            android:layout_marginTop="20dp"
             android:textSize="@dimen/dim_18sp" />
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/et_phone"
+            android:id="@+id/mobileno"
             android:layout_width="match_parent"
             android:layout_height="@dimen/dim_50dp"
             android:background="@drawable/edittext_border"
             android:padding="@dimen/dim_10dp"
+            android:drawableEnd="@drawable/phone_icon"
             android:inputType="phone"
+            android:layout_marginTop="5dp"
             android:maxLength="10"/>
 
         <Button
@@ -53,11 +57,11 @@
             android:textSize="@dimen/dim_18sp" />
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="180dp"
+            android:layout_height="180dp"
             android:layout_gravity="center"
             android:layout_marginTop="@dimen/dim_20dp"
-            android:src="@drawable/roundup_logo" />
+            android:src="@drawable/login_logo" />
     </LinearLayout>
 
     <ImageView
@@ -74,12 +78,13 @@
         android:layout_marginEnd="205dp"
         android:layout_marginBottom="0dp"
         android:src="@drawable/roundup_text" />
--->
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+
+    <!--<androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/white"
+        android:background="@color/login_bg"
+
         >
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -101,7 +106,7 @@
                 android:src="@drawable/roundup_logo"
                 />
 
-          <!--  <androidx.appcompat.widget.AppCompatEditText
+          &lt;!&ndash;  <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/mobileno"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
@@ -115,7 +120,7 @@
                 android:padding="@dimen/dim_10dp"
                 android:textSize="@dimen/dim_14sp"
                 android:text=""
-                />-->
+                />&ndash;&gt;
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/mobilenolayout"
@@ -187,6 +192,6 @@
             </RelativeLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>-->
 
 </RelativeLayout>
