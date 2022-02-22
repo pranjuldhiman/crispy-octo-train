@@ -38,7 +38,9 @@ class VideoAdapter(
 
                     onAdapterClicked(videosdata.videourl.toString(),videosdata.id.toString()) }
               //  RoundUpHelper.setImageUsingPicasso(context, videimg, RoundUpRepositoryRetrofit.THUMBNAIL_IMAGE_URL.plus(videosdata.thumbnail.orEmpty()))
-                txt_description.loadData(videosdata.description, "text/html", "UTF-8")
+
+               txt_description.loadData(videosdata.description!!, "text/html", "UTF-8")
+                Log.e("VIDEOADAPTER","txt_description")
 
 
 

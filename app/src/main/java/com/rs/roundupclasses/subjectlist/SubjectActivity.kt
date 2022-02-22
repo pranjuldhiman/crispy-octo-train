@@ -54,7 +54,7 @@ class SubjectActivity : AppCompatActivity() {
         progress = ProgressDialog(this)
 
         setContentView(R.layout.subject_activity)
-        id = intent.getStringExtra("ID")
+        id = intent.getStringExtra("ID")!!
         var type = intent.getStringExtra("type")
 
         Log.e("CATEGORYNAME","final final id is......"+id.toString())

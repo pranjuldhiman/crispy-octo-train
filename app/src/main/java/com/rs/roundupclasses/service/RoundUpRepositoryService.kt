@@ -51,7 +51,11 @@ interface RoundUpRepositoryService {
 
     @FormUrlEncoded
     @POST("user/check.html")
-    suspend fun getLogin(@Field("mobile") userId: String): Response<MODSafetyModel>
+    suspend fun getLogin(@Field("mobile") userId: String,@Field("fcm_token") token: String): Response<MODSafetyModel>
+
+    @FormUrlEncoded
+    @POST("user/updatefcm.html")
+    suspend fun updateFcm(@Field("userid") userId: String,@Field("fcm_token") token: String): Response<MODSafetyModel>
 
     @FormUrlEncoded
     @POST("get/notifications.html")

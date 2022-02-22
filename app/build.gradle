@@ -7,21 +7,21 @@ apply plugin: 'com.google.gms.google-services'
 android {
     signingConfigs {
         release {
-            storeFile file('E:\\mukesh\\signedapkfile\\roundup\\roundup.jks')
+//            storeFile file('E:\\mukesh\\signedapkfile\\roundup\\roundup.jks')
             storePassword 'ragasoftroundup@123'
             keyAlias 'roundup'
             keyPassword 'ragasoftroundup@123'
         }
     }
-    compileSdkVersion 29
+    compileSdkVersion 30
     buildToolsVersion "29.0.2"
 
     defaultConfig {
         applicationId "com.rs.roundupclasses"
         minSdkVersion 21
-        targetSdkVersion 29
-        versionCode 6
-        versionName "1.5"
+        targetSdkVersion 30
+        versionCode 10
+        versionName "1.9"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 
@@ -66,7 +66,6 @@ dependencies {
     implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
 
     //Retrofit
-
     //kotlin
     implementation "com.squareup.moshi:moshi:$version_moshi"
     implementation "com.squareup.moshi:moshi-kotlin:$version_moshi"
@@ -127,9 +126,9 @@ dependencies {
     // alternately - if using Java8, use the following instead of lifecycle-compiler
     implementation "androidx.lifecycle:lifecycle-common-java8:$lifecycle_version"
     implementation "com.google.firebase:firebase-auth:$firebase_version"
-    implementation 'com.google.firebase:firebase-messaging:20.1.5'
+    implementation 'com.google.firebase:firebase-messaging:21.0.1'
     implementation 'com.google.firebase:firebase-analytics:17.2.2'
-    implementation 'com.google.firebase:firebase-core:17.4.3'
+    implementation 'com.google.firebase:firebase-core:18.0.2'
     implementation 'com.google.firebase:firebase-ml-vision:24.0.3'
     implementation 'com.squareup.picasso:picasso:2.5.2'
 

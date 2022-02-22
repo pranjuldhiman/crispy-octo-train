@@ -65,10 +65,11 @@ class AfterSubjectList : AppCompatActivity() {
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.subject_activity)
-        id = intent.getStringExtra("ID")
+        id = intent.getStringExtra("ID").toString()
         var type = intent.getStringExtra("type")
 
         viewModel.gettopicData(userid,id)
+
         setViewModelObservers()
 
         toolbartex.text = type.toString()

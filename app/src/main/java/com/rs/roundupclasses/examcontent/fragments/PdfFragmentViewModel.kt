@@ -17,6 +17,8 @@ class PdfFragmentViewModel (private val context: Context): ViewModel() {
     val serviceException: LiveData<String?> = _serviceException
     private val _listOfSearchResult = MutableLiveData<List<Videos>?>()
     val listOfSearchResult: LiveData<List<Videos>?> = _listOfSearchResult
+
+
     var listOfSearchResults: MutableList<Videos>? =  mutableListOf()
 
     fun getVideoData(userid:String,topicid:String) {
@@ -35,7 +37,8 @@ class PdfFragmentViewModel (private val context: Context): ViewModel() {
 
     private fun onSuccessResponse(data: MODVideoModeResponse?) {
         data?.let {
-            Log.d("GETVIDEOS", "videos is......" + Gson().toJson(data))
+            Log.e("GETVIDEOS", "final videos is......" + Gson().toJson(data))
+            Log.e("GETVIDEOS", "final videos is......" + Gson().toJson(data).length)
             if (data.status == 200) {
                 for (position in data.data!!.indices) {
                     if (!data.data!!.get(position).pdfurl.equals(null)) {
@@ -59,8 +62,9 @@ class PdfFragmentViewModel (private val context: Context): ViewModel() {
                             )
                         )
                     }
-                    _listOfSearchResult.value = listOfSearchResults
-                }/*else{
+                }
+                _listOfSearchResult.value = listOfSearchResults
+                /*else{
                 _serviceException.value = "We could not found any search result for the given query!"
             }*/
             }

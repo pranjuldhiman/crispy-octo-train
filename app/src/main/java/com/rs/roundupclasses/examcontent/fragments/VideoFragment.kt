@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -43,7 +44,10 @@ class VideoFragment: Fragment() {
         var userid: String= sharedPreferences.getString(Constants.USERID,"").toString()
         progress = ProgressDialog(activity as AppCompatActivity)
 
-        viewModel.getVideoData(userid,topic_id!!)
+       // Log.e("CH")
+
+      viewModel.getVideoData(userid,topic_id!!)
+  //    viewModel.getVideoData(userid,"131"!!)
         setViewModelObservers()
         /*rcv_exam_component.apply {
             layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)

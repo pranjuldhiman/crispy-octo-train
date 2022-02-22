@@ -29,6 +29,7 @@ import com.rs.roundupclasses.R
 import com.rs.roundupclasses.chooseicon.ChooseIconActivity
 import com.rs.roundupclasses.dashboard.adapter.*
 import com.rs.roundupclasses.dashboard.model.Subcategory
+import com.rs.roundupclasses.examcontent.DemoActivity
 import com.rs.roundupclasses.examcontent.ExamContentActivity
 import com.rs.roundupclasses.library.LibraryActivity
 import com.rs.roundupclasses.notify.NotificationActivity

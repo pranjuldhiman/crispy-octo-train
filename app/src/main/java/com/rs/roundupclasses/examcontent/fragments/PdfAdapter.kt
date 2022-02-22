@@ -35,7 +35,7 @@ class PdfAdapter(private val onAdapterClicked:(name: String,url: String) -> Unit
                 setOnClickListener { onAdapterClicked(videosdata.title.toString(),videosdata.pdfurl.toString()) }
             //    title.text = videosdata.title.toString()
               //  description.text = videosdata.description.toString()
-                txt_description.loadData(videosdata.description, "text/html", "UTF-8")
+                txt_description.loadData(videosdata.description!!, "text/html", "UTF-8")
 
                 mainpdflayout.setOnClickListener {
                     Log.e("MAINLAYOUT","mainpdflayout mainpdflayout listener is called........")

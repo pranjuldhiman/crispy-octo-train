@@ -39,6 +39,10 @@ class OtpActivity : AppCompatActivity() {
         enteredMobileNumber = intent.getStringExtra(PHONE_NUMBER)
         sendVerificationCodeToUser(enteredMobileNumber)
         setViewModelObservers()
+
+     ApplicationPrefs.setLoggedIn(true)
+       startActivity(Intent(this@OtpActivity, MainActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK ).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK))
+
     }
 
     private fun setViewModelObservers() {

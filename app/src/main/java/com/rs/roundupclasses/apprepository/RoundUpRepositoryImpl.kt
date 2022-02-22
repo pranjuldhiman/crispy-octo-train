@@ -101,11 +101,22 @@ class RoundUpRepositoryImpl(
         }
     }
 
-    override suspend fun getLogin(mobileno: String): ServiceResult<MODSafetyModel?> {
+    override suspend fun getLogin(mobileno: String,token:String): ServiceResult<MODSafetyModel?> {
         return withContext(ioDispatcher) {
             RetrofitCallbackHandler.processCall {
-                Log.e("GETVIDEOS","getVideos param is......"+mobileno.toString())
-                roundUpService.getLogin(mobileno.toString())
+                Log.e("APIRESPONSE","login api is mobile no param is......"+mobileno.toString())
+                Log.e("APIRESPONSE","login api is token param is......"+token.toString())
+                roundUpService.getLogin(mobileno.toString(),token.toString())
+            }
+        }
+    }
+
+    override suspend fun updateFcm(userID: String,token:String): ServiceResult<MODSafetyModel?> {
+        return withContext(ioDispatcher) {
+            RetrofitCallbackHandler.processCall {
+                Log.e("APIRESPONSE","updateFCM api is mobile no param is......"+userID.toString())
+                Log.e("APIRESPONSE","updateFCM api is token param is......"+token.toString())
+                roundUpService.updateFcm(userID.toString(),token.toString())
             }
         }
     }

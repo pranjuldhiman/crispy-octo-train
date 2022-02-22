@@ -31,14 +31,14 @@ class LoginViewModel (private val context: Context): ViewModel() {
     val status : LiveData<ApiStatus?>
         get() = _status
 
-    fun getLogin(mobileno:String) {
+    fun getLogin(mobileno:String,token:String) {
         _status.value = ApiStatus.LOADING
 
         viewModelScope.launch {
             Log.e("Response","response mobno...."+mobileno.toString())
 
             when(val serviceResult =
-                roundUpRepository.getLogin(mobileno.toString())){
+                roundUpRepository.getLogin(mobileno.toString(),token.toString())){
                 is ServiceResult.Success -> onSuccessResponse(serviceResult.data)
                 is ServiceResult.Error -> onFailure(serviceResult.exception)
             }
