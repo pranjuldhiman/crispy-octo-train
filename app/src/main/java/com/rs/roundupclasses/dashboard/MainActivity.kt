@@ -220,15 +220,15 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun isAppInstalled(packageName: String): Boolean {
+    private fun isAppInstalled(): Boolean {
         val pm = packageManager
-        val app_installed: Boolean = try {
-            pm.getPackageInfo(packageName, PackageManager.GET_ACTIVITIES)
+        val appInstalled: Boolean = try {
+            pm.getPackageInfo("com.whatsapp", PackageManager.GET_ACTIVITIES)
             true
         } catch (e: PackageManager.NameNotFoundException) {
             false
         }
-        return app_installed
+        return appInstalled
     }
 
     private fun configureUi() {
@@ -278,7 +278,7 @@ class MainActivity : AppCompatActivity() {
                     Log.e("CHECKDATA", "whatsapp is called called")
 
                     var formattedNumber = "+919877163246"
-                    if (isAppInstalled("com.whatsapp")) {
+                    if (isAppInstalled()) {
                         var message = ""
                         //    var formattedNumber = "+918727888793"
                         //   var formattedNumber = "+917347444327"
